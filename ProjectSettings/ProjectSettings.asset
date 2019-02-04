@@ -616,12 +616,13 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
+    Collab: 1
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: b08e6043-df03-45ca-83a1-72ab07583536
+  cloudProjectId: bb8ef83e-64f6-4473-a822-bfe8d5d23631
   projectName: HollowDucks
-  organizationId: unity_iujayvl74uqfpq
+  organizationId: unity_7rc7qs8cwqw2ag
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
