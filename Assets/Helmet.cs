@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Armor : MonoBehaviour
+public class Helmet : MonoBehaviour
 {
 
     Rigidbody2D rb;
@@ -12,18 +12,18 @@ public class Armor : MonoBehaviour
     int healthPoints = 1, armorPoints = 1;
 
     [SerializeField]
-    GameObject bulletproofVest = null;
+    GameObject bulletproofHelmet = null;
 
     [SerializeField]
     Image healthpoints = null, armor = null;
 
-    bool bulletproofVestIsOn = false;
+    bool bulletproofHelmetIsOn = false;
 
 
     // Use this for initialization
     void Start()
     {
-        bulletproofVest.SetActive(false);
+        bulletproofHelmet.SetActive(false);
         rb = GetComponent<Rigidbody2D>();
         healthpoints.fillAmount = 1f;
         armor.fillAmount = 0f;
@@ -44,8 +44,8 @@ public class Armor : MonoBehaviour
     {
         if (col.gameObject.name.Equals("BulletproofVest"))
         {
-            bulletproofVest.SetActive(true);
-            bulletproofVestIsOn = true;
+            bulletproofHelmet.SetActive(true);
+            bulletproofHelmetIsOn = true;
             healthpoints.fillAmount = 1f;
             armor.fillAmount = 1f;
 
@@ -63,12 +63,12 @@ public class Armor : MonoBehaviour
             Destroy(col.gameObject);
 
 
-            if (bulletproofVestIsOn)
+            if (bulletproofHelmetIsOn)
             {
                 armor.fillAmount -= 1f;
 
 
-                if (bulletproofVestIsOn)
+                if (bulletproofHelmetIsOn)
                 {
                     armor.fillAmount -= 0.2f;
 
@@ -76,23 +76,23 @@ public class Armor : MonoBehaviour
 
                     if (armorPoints <= 0)
                     {
-                        bulletproofVestIsOn = false;
-                        bulletproofVest.SetActive(false);
+                        bulletproofHelmetIsOn = false;
+                        bulletproofHelmet.SetActive(false);
                     }
 
                 }
-                //else
-                //{
+                else
+                {
 
-                //    healthpoints.fillAmount -= 1f;
+                    healthpoints.fillAmount -= 1f;
 
-                //    healthpoints.fillAmount -= 0.2f;
+                    healthpoints.fillAmount -= 0.2f;
 
-                //    healthPoints -= 1;
+                    healthPoints -= 1;
 
-                //    if (healthPoints <= 0)
-                //        Destroy(gameObject);
-                //}
+                    if (healthPoints <= 0)
+                        Destroy(gameObject);
+                }
             }
 
         }
