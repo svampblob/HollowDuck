@@ -122,7 +122,7 @@ public class Movment : MonoBehaviour {
         {
             Crouch = true;
         }
-        if (Input.GetButtonUp(crouchkey))
+        if (Input.GetButtonUp(crouchkey + Player))
         {
             Crouch = false;
         }
@@ -139,7 +139,7 @@ public class Movment : MonoBehaviour {
 
             disablecollider2D.enabled = true;
         }
-        if (Input.GetButtonDown(crouchkey))
+        if (Input.GetButtonDown(crouchkey + Player))
         {
             if (gameObject.GetComponent<SpriteRenderer>().sprite == Deafult)
             {
@@ -148,14 +148,14 @@ public class Movment : MonoBehaviour {
             }
 
         }
-        if (Input.GetButtonUp(crouchkey))
+        if (Input.GetButtonUp(crouchkey + Player))
         {
             if (gameObject.GetComponent<SpriteRenderer>().sprite == Crouchsprite)
             {
                 gameObject.GetComponent<SpriteRenderer>().sprite = Deafult;
             }
         }
-        if (Input.GetButtonDown(crouchkey))
+        if (Input.GetButtonDown(crouchkey + Player))
        {
             slidingtimer = 0f;
             sliding = true;
@@ -172,7 +172,7 @@ public class Movment : MonoBehaviour {
             }
            
        }
-        if (Input.GetButtonUp(crouchkey))
+        if (Input.GetButtonUp(crouchkey + Player))
         {
             Movment.movespeed = 6f;
             sliding = false;
