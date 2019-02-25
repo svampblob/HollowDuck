@@ -73,8 +73,8 @@ public class Movment : MonoBehaviour {
     void Movefunction()
     {
         rbody.velocity = new Vector2(Input.GetAxisRaw(movekey + Player) * movespeed, rbody.velocity.y);
-        
-
+        //transform.localScale = new Vector3(1f, 1f, 1f);
+        //transform.rotation
     }
     void Jumpfunction()
     {
