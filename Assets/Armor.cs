@@ -32,17 +32,17 @@ public class Armor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        dirX = Input.GetAxisRaw("Horizontal") * moveSpeed;
+        //dirX = Input.GetAxisRaw("Horizontal") * moveSpeed;
     }
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(dirX, rb.velocity.y);
+        //rb.velocity = new Vector2(dirX, rb.velocity.y);
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.name.Equals("BulletproofVest"))
+        if (col.gameObject.tag.Equals("BulletproofVest"))
         {
             bulletproofVest.SetActive(true);
             bulletproofVestIsOn = true;
@@ -58,45 +58,45 @@ public class Armor : MonoBehaviour
             Destroy(col.gameObject);
         }
 
-        if (col.gameObject.GetComponent<Bullet>())
-        {
-            Destroy(col.gameObject);
-
-
-            if (bulletproofVestIsOn)
+            if (col.gameObject.GetComponent<Bullet>() != null)
             {
-                armor.fillAmount -= 1f;
+                Destroy(col.gameObject);
 
 
-                if (bulletproofVestIsOn)
-                {
-                    armor.fillAmount -= 0.2f;
+        //        if (bulletproofVestIsOn)
+        //        {
+        //            armor.fillAmount -= 1f;
 
-                    armorPoints -= 1;
 
-                    if (armorPoints <= 0)
-                    {
-                        bulletproofVestIsOn = false;
-                        bulletproofVest.SetActive(false);
-                    }
+        //            if (bulletproofVestIsOn)
+        //            {
+        //                armor.fillAmount -= 0.2f;
 
-                }
-                //else
-                //{
+        //                armorPoints -= 1;
 
-                //    healthpoints.fillAmount -= 1f;
+        //                if (armorPoints <= 0)
+        //                {
+        //                    bulletproofVestIsOn = false;
+        //                    bulletproofVest.SetActive(false);
+        //                }
 
-                //    healthpoints.fillAmount -= 0.2f;
+        //            }
+        //            //else
+        //            //{
 
-                //    healthPoints -= 1;
+        //            //    healthpoints.fillAmount -= 1f;
 
-                //    if (healthPoints <= 0)
-                //        Destroy(gameObject);
-                //}
-            }
+        //            //    healthpoints.fillAmount -= 0.2f;
 
-        }
+        //            //    healthPoints -= 1;
 
+        //            //    if (healthPoints <= 0)
+        //            //        Destroy(gameObject);
+        //            //}
+             }
+
+        //    }
 
     }
+    //}
 }

@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     {
         //Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
-
+        Camera.main.GetComponent<MultipleTargetCamera>().targets.Remove(transform);
     }
 
 

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Helmet : MonoBehaviour
 {
 
+    public bool IsHit;
     Rigidbody2D rb;
     float dirX, moveSpeed = 5f;
 
@@ -32,17 +33,12 @@ public class Helmet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        dirX = Input.GetAxisRaw("Horizontal") * moveSpeed;
-    }
 
-    void FixedUpdate()
-    {
-        rb.velocity = new Vector2(dirX, rb.velocity.y);
     }
-
+    
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.name.Equals("BulletproofVest"))
+        if (col.gameObject.tag.Equals("BulletproofHelmet"))
         {
             bulletproofHelmet.SetActive(true);
             bulletproofHelmetIsOn = true;
@@ -63,40 +59,40 @@ public class Helmet : MonoBehaviour
             Destroy(col.gameObject);
 
 
-            if (bulletproofHelmetIsOn)
-            {
-                armor.fillAmount -= 1f;
+            //    if (bulletproofHelmetIsOn)
+            //    {
+            //        armor.fillAmount -= 1f;
 
 
-                if (bulletproofHelmetIsOn)
-                {
-                    armor.fillAmount -= 0.2f;
+            //        if (bulletproofHelmetIsOn)
+            //        {
+            //            armor.fillAmount -= 0.2f;
 
-                    armorPoints -= 1;
+            //            armorPoints -= 1;
 
-                    if (armorPoints <= 0)
-                    {
-                        bulletproofHelmetIsOn = false;
-                        bulletproofHelmet.SetActive(false);
-                    }
-
-                }
-                else
-                {
-
-                    healthpoints.fillAmount -= 1f;
-
-                    healthpoints.fillAmount -= 0.2f;
-
-                    healthPoints -= 1;
-
-                    if (healthPoints <= 0)
-                        Destroy(gameObject);
-                }
-            }
-
+            //            if (armorPoints <= 0)
+            //            {
+            //                bulletproofHelmetIsOn = false;
+            //                bulletproofHelmet.SetActive(false);
+            //            }
         }
-
-
     }
+               
+                
+                
+                //else
+                //{
+
+                //    healthpoints.fillAmount -= 1f;
+
+                //    healthpoints.fillAmount -= 0.2f;
+
+                //    healthPoints -= 1;
+
+                //    if (healthPoints <= 0)
+                //        Destroy(gameObject);
+                //}
+            //}
+
+
 }
