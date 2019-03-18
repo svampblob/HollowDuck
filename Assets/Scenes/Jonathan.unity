@@ -1445,7 +1445,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4710488951883974, guid: 3ffcd0872349da34aa44b7dff8379c99, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -9.68
       objectReference: {fileID: 0}
     - target: {fileID: 4710488951883974, guid: 3ffcd0872349da34aa44b7dff8379c99, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1477,6 +1477,21 @@ Prefab:
       propertyPath: targets.Array.data[1]
       value: 
       objectReference: {fileID: 2098652194}
+    - target: {fileID: 114415775150424310, guid: 3ffcd0872349da34aa44b7dff8379c99,
+        type: 2}
+      propertyPath: minZoom
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114415775150424310, guid: 3ffcd0872349da34aa44b7dff8379c99,
+        type: 2}
+      propertyPath: maxZoom
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114415775150424310, guid: 3ffcd0872349da34aa44b7dff8379c99,
+        type: 2}
+      propertyPath: zoomLimiter
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ffcd0872349da34aa44b7dff8379c99, type: 2}
   m_IsPrefabAsset: 0

@@ -7,10 +7,10 @@ public class MultipleTargetCamera : MonoBehaviour
     
     public List<Transform> targets;
     public Vector3 offset;
-    public float smoothTime = 0.5f;
-    public float minZoom = 40f;
-    public float maxZoom = 10f;
-    public float zoomLimiter;
+    public float smoothTime = 0.2f;
+    public float minZoom = 6f;
+    public float maxZoom = 2f;
+    public float zoomLimiter = 10f;
     private Vector3 velocity;
     private Camera cam;
     
@@ -25,14 +25,34 @@ public class MultipleTargetCamera : MonoBehaviour
             return;
 
         Move();
-        Zoom();
+        Zoom(); 
     }
 
 
     void Zoom()
     {
         float newZoom = Mathf.Lerp(maxZoom, minZoom, GetGreatestDistance() / zoomLimiter);
-        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, newZoom, Time.deltaTime);
+        print (GetGreatestDistance() / zoomLimiter);
+        cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, newZoom, Time.deltaTime);
+        Vector2 Left = targets[0].transform.position;
+            Vector2 Right = targets[0].transform.position;
+        if(targets.Count > 1)
+        {
+
+            for (int i = 0; i < targets.Count; i++)
+            {
+                if(targets[i].transform.position.x < Left.x)
+                {
+                    Left = targets[i].transform.position;
+                }
+                if(targets[i].transform.position.x > Right.x)
+                {
+                    Right = targets[i].transform.position;
+                }
+            }
+
+        }
+        float dist =  Vector2.Distance(Left, Right);
     }
     void Move()
     {
