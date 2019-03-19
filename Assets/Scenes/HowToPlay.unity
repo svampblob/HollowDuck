@@ -647,7 +647,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Jump : A
 
-    Strafe : Left Joystick'
+    Strafe : Left Joystick
+
+    Slide/Crouch : LB'
 --- !u!222 &720780044
 CanvasRenderer:
   m_ObjectHideFlags: 0

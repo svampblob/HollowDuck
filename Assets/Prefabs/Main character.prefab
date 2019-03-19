@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 7260333434811611580}
   m_Layer: 0
   m_Name: Main character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -263,7 +263,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  score: 0
 --- !u!114 &7260333434811611580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,10 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e296f8016e0152c42842bab5bab1de30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 0}
-  player2: {fileID: 0}
-  player3: {fileID: 0}
-  player4: {fileID: 0}
+  playerscore: 5
 --- !u!1 &1358237269296310
 GameObject:
   m_ObjectHideFlags: 0

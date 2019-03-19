@@ -12,7 +12,7 @@ public class Movment : MonoBehaviour {
     public static float movespeed = 6f;
     // vareabel till Jumpfunction
 
-    public static float Jumpspeed = 15f;
+    public static float Jumpspeed = 17f;
 
     // Vareabler till crouch animation och crouch collider2D
     public Sprite Deafult;
