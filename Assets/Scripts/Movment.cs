@@ -4,60 +4,60 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Movment : MonoBehaviour {
-
+public class Movment : MonoBehaviour
+{
+    public bool holdingGun;
     public int Player;
     public bool Is_Shooting;
     // Vareabel till Movefunction
     public static float movespeed = 6f;
+    public bool weapondirection;
+    public bool moving;
     // vareabel till Jumpfunction
-
     public static float Jumpspeed = 15f;
-
+    public bool jump;
     // Vareabler till crouch animation och crouch collider2D
     public Sprite Deafult;
     public Sprite Crouchsprite;
     public Collider2D disablecollider2D;
-
-    // Vareabel till GRounchecker scriptet
+    public Collider2D slidingcollider;
+    public Collider2D idlecollider;
+    // Vareabel till Grounchecker scriptet
     public Groundchecker groundcheck;
-
     // Hämtar Rigidbody
     private Rigidbody2D rbody;
-
     // Vareabel till Crouchfunction
     public bool Crouch;
-    
     // Vareabel till crouchslidingfunction
-    public  bool sliding = false;
+    public bool sliding = false;
+    public bool islsiding;
     public float slidingtimer = 0f;
     public float maxslidetime = 0.5f;
-
-    // Vareabeler till grabb scriptet
-    public bool grabbed;
-    RaycastHit2D hit;
-    public float distanceX = 1f;
-    public Transform holdpoint;
-    public float throwpower = 15f;
-    public LayerMask notgrabbed;
-    
+    public bool canslide;
     // Charcter Animator
     public Animator animator;
-
     // Keys to controllers
     public string jumpKey = "Jump";
     public string movekey = "MoveHorizontal";
     public string crouchkey = "Crouch";
     public string Grabbkey = "Grabbing";
     public string ShootingKey = "Fire";
+    public string ungrabbed = "unGrabbed";
 
-    private Gun equipped;
-   
-    void Start () {
-        
-        rbody = GetComponent<Rigidbody2D>(); 
+    public Gun equipped;
+    public Grabbscript grab;
+
+    public bool grabbed;
+    public bool Shooting;
+
+    void Start()
+    {
+        slidingcollider.enabled = false;
+        disablecollider2D.enabled = false;
+        rbody = GetComponent<Rigidbody2D>();
         gameObject.GetComponent<SpriteRenderer>().sprite = Deafult;
         Crouch = false;
+
     }
     void Update()
     {
@@ -65,177 +65,214 @@ public class Movment : MonoBehaviour {
         Jumpfunction();
         Crouchfunction();
         CrouchGlidefunction();
-        weaponpickup();
         IsShooting();
+
     }
 
-   
-    void Movefunction()
+
+    public void Movefunction()
     {
+
+
         rbody.velocity = new Vector2(Input.GetAxisRaw(movekey + Player) * movespeed, rbody.velocity.y);
-        //transform.localScale = new Vector3(1f, 1f, 1f);
-        //transform.rotation
+
+
+        if (Input.GetAxisRaw(movekey + Player) < 0)
+        {
+
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+            transform.rotation = Quaternion.identity;
+            weapondirection = true;
+            moving = true;
+            animator.SetBool("Running", true);
+            if(holdingGun == true)
+            {
+                animator.SetBool("Gun_Run", true);
+                animator.SetBool("Running", false);
+                animator.SetBool("Idle", false);
+                animator.SetBool("Idle_Handgun", false);
+            }
+            if(holdingGun == false)
+            {
+                animator.SetBool("Gun_Run", false);
+                animator.SetBool("Running", true);
+                animator.SetBool("Gun_Run", false);
+            }
+        }// Vänster
+        if (Input.GetAxisRaw(movekey + Player) > 0)
+        {
+
+            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.rotation = Quaternion.identity;
+            weapondirection = false;
+            moving = true;
+            animator.SetBool("Running", true);
+        }// Höger
+        if(Input.GetAxisRaw(movekey + Player) == 0)
+        {
+            moving = false;
+            if (holdingGun == true)
+            {
+                animator.SetBool("Idle_Handgun", true);
+                
+            }
+            else
+            {
+                animator.SetBool("Idle_Handgun", false);
+
+                holdingGun = false;
+            }
+            if (holdingGun == false)
+            {
+                animator.SetBool("Idle", true);
+            }
+            animator.SetBool("Running", false);
+        }
+
+        if (Input.GetAxisRaw(movekey + Player) < 0 && Input.GetButtonDown(crouchkey + Player))
+        {
+            canslide = true;
+        }
+        if (Input.GetAxisRaw(movekey + Player) > 0 && Input.GetButtonDown(crouchkey + Player))
+        {
+            canslide = true;
+        }
+        if (Input.GetButtonUp(crouchkey + Player))
+        {
+            //canslide = false;
+        }
     }
     void Jumpfunction()
     {
         if (Input.GetButtonDown(jumpKey + Player))
         {
-            
+
             if (groundcheck.isgrounded > 0)
             {
                 rbody.velocity = new Vector2(rbody.velocity.x, Jumpspeed);
 
             }
+
         }
-        
+        if (groundcheck.isgrounded == 0)
+        {
+            canslide = false;
+            Crouch = false;
+            animator.SetBool("Running", false);
+            animator.SetBool("Jump", true);
+            animator.SetBool("Gun_Run", false);
+            animator.SetBool("Idle_Handgun", false);
+            animator.SetBool("canslide", true);
+           
+
+        }
+        if (groundcheck.isgrounded == 1)
+        {
+            animator.SetBool("Jump", false);
+        }
     }
     void Crouchfunction()
     {
         if (Input.GetButtonDown(crouchkey + Player))
         {
             Crouch = true;
-           
+
         }
         if (Input.GetButtonUp(crouchkey + Player))
         {
             Crouch = false;
-            
-        }
 
+        }
         if (Crouch == true)
         {
 
-            disablecollider2D.enabled = false;
-
-
+            disablecollider2D.enabled = true;
+            idlecollider.enabled = false;
+            movespeed = 0f;
+            animator.SetBool("Crouch", true);
         }
         if (Crouch == false)
         {
-           
-            disablecollider2D.enabled = true;
+            idlecollider.enabled = true;
+            disablecollider2D.enabled = false;
+            movespeed = 6f;
+            animator.SetBool("Crouch", false);
         }
-    
+      
     }
     void CrouchGlidefunction()
     {
-        if (Input.GetButtonDown(crouchkey + Player))
-        {
-            Crouch = true;
-        }
-        if (Input.GetButtonUp(crouchkey + Player))
-        {
-            Crouch = false;
-        }
-
-        if (Crouch == true)
+        if (canslide == true)
         {
 
-            disablecollider2D.enabled = false;
-
-
-        }
-        if (Crouch == false)
-        {
-
-            disablecollider2D.enabled = true;
-        }
-        if (Input.GetButtonDown(crouchkey + Player))
-        {
-            if (gameObject.GetComponent<SpriteRenderer>().sprite == Deafult)
-            {
-                gameObject.GetComponent<SpriteRenderer>().sprite = Crouchsprite;
-
-            }
-
-        }
-        if (Input.GetButtonUp(crouchkey + Player))
-        {
-            if (gameObject.GetComponent<SpriteRenderer>().sprite == Crouchsprite)
-            {
-                gameObject.GetComponent<SpriteRenderer>().sprite = Deafult;
-            }
-        }
-        if (Input.GetButtonDown(crouchkey + Player))
-       {
-            slidingtimer = 0f;
+            
             sliding = true;
-            Movment.movespeed = 4.5f;
-       }
-       if(sliding == true)
-       {
-            slidingtimer += Time.deltaTime;
 
+            Movment.movespeed = 12f;
+        }
+        if (sliding == true)
+        {
+            slidingtimer += Time.deltaTime;
             if (slidingtimer > maxslidetime)
             {
                 sliding = false;
                 Movment.movespeed = 0f;
+                canslide = false;
             }
-           
-       }
-        if (Input.GetButtonUp(crouchkey + Player))
-        {
-            Movment.movespeed = 6f;
-            sliding = false;
-
             if (sliding == false)
             {
                 Movment.movespeed = 6f;
+                slidingtimer = 0f;
             }
         }
-        
-    }
-    void weaponpickup()
-    {
-        // Raycast X
-        if (Input.GetButtonDown(Grabbkey + Player))
+
+
+        if (sliding == true)
         {
-            Debug.Log(string.Format("clicking"));
-            if (!grabbed)
+            if (canslide == true)
             {
-                Physics2D.queriesStartInColliders = false;
-
-                hit = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, distanceX);
-
-                if (hit.collider != null && hit.collider.tag == "grabbable")
-                {
-                    grabbed = true;
-                    hit.collider.GetComponent<colliderONOF>().move = false;
-                    equipped = hit.collider.GetComponent<Gun>();
-                    equipped.Shooting = true;
-                }
-
+                animator.SetBool("Idle_Handgun", false);
+                slidingcollider.enabled = true;
+                idlecollider.enabled = false;
+                Crouch = false;
+                animator.SetBool("canslide", true);
+                animator.SetBool("Running", false);
+                animator.SetBool("Gun_Run", false);
             }
-            else if (!Physics2D.OverlapPoint(holdpoint.position, notgrabbed))
+
+        }
+        if (sliding == false)
+        {
+            if (canslide == false)
             {
-                grabbed = false;
-                hit.collider.GetComponent<colliderONOF>().move = true;
-                equipped = null;
+                
+                slidingcollider.enabled = false;
+                idlecollider.enabled = true;
+                animator.SetBool("canslide", false);
+            }
+        }
 
-                if (hit.collider.gameObject.GetComponent<Rigidbody2D>() != null)
-                {
 
-                    hit.collider.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0) * throwpower;
-                }
+    }
+    void IsShooting()
+    {
+        if (Input.GetButtonDown(ShootingKey + Player))
+        {
+            if(holdingGun == true)
+            {
+                equipped.IsShooting = true;
             }
             
         }
-        if (grabbed)
-        
-            hit.collider.gameObject.transform.position = holdpoint.position;
-    }
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.right * transform.localScale.x * distanceX);
-    }
-   void IsShooting()
-   {
-        if(Input.GetButtonDown(ShootingKey + Player))
+        if (Input.GetButtonUp(ShootingKey + Player))
         {
-            equipped.Shoot();
+            if(holdingGun == true)
+            {
+                equipped.IsShooting = false;
+            }
+           
         }
-       
-   }
+    }
+   
 }
 

@@ -12,7 +12,8 @@ public class Gun : MonoBehaviour {
     private bool NoAmmo = false;
     public bool Shooting;
     public bool IsShooting;
-   
+    public Movment move;
+    public bool Grabbed;
    
     void Start()
     {
@@ -29,10 +30,11 @@ public class Gun : MonoBehaviour {
             Debug.Log("Out of ammo");
             NoAmmo = true; 
         }
-
+   
         if (IsShooting == true)
         
             Shoot();
+
        
     }
     
@@ -43,6 +45,7 @@ public class Gun : MonoBehaviour {
             currentAmmo--;
             Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
             RaycastHit2D hitInfo = Physics2D.Raycast(FirePoint.position, FirePoint.right);
+            
 
 
     }
