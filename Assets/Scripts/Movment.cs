@@ -69,7 +69,6 @@ public class Movment : MonoBehaviour
 
     }
 
-
     public void Movefunction()
     {
 
@@ -79,7 +78,7 @@ public class Movment : MonoBehaviour
 
         if (Input.GetAxisRaw(movekey + Player) < 0)
         {
-
+            
             transform.localScale = new Vector3(-1f, 1f, 1f);
             transform.rotation = Quaternion.identity;
             weapondirection = true;
@@ -106,6 +105,10 @@ public class Movment : MonoBehaviour
             transform.rotation = Quaternion.identity;
             weapondirection = false;
             moving = true;
+            if(holdingGun == true)
+            {
+                animator.SetBool("Gun_Run", true);
+            }
             animator.SetBool("Running", true);
         }// Höger
         if(Input.GetAxisRaw(movekey + Player) == 0)
@@ -114,7 +117,7 @@ public class Movment : MonoBehaviour
             if (holdingGun == true)
             {
                 animator.SetBool("Idle_Handgun", true);
-                
+                animator.SetBool("Gun_Run", false);
             }
             else
             {
@@ -260,7 +263,11 @@ public class Movment : MonoBehaviour
         {
             if(holdingGun == true)
             {
-                equipped.IsShooting = true;
+                if(equipped.NoAmmo == false)
+                {
+                    equipped.IsShooting = true;
+                }
+                
             }
             
         }
@@ -268,7 +275,11 @@ public class Movment : MonoBehaviour
         {
             if(holdingGun == true)
             {
-                equipped.IsShooting = false;
+                if(equipped.NoAmmo == false)
+                {
+                   equipped.IsShooting = false;
+                }
+               
             }
            
         }

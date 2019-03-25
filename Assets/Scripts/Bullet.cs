@@ -14,16 +14,15 @@ public class Bullet : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        Rb.velocity = transform.right* speed;
+        Rb.velocity = transform.right * speed;
         
         if(Input.GetAxisRaw(move.movekey + move.Player) < 0)
         {
-            speed = -speed;
+            Rb.velocity = transform.right * -speed;
         }
-        if (Input.GetAxisRaw(move.movekey + move.Player) > 0)
-        {
-            speed = 20f;
-        }
+        else
+        { speed = 20f; }
+       
     }
 
      void OnTriggerEnter2D(Collider2D hitInfo)

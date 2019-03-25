@@ -9,7 +9,7 @@ public class Gun : MonoBehaviour {
     public int damage = 1;
     public int Maxammo = 1;
     public int currentAmmo;
-    private bool NoAmmo = false;
+    public bool NoAmmo = false;
     public bool Shooting;
     public bool IsShooting;
     public Movment move;
@@ -17,7 +17,7 @@ public class Gun : MonoBehaviour {
    
     void Start()
     {
-      if(currentAmmo == -1)
+      if(currentAmmo == 1)
       currentAmmo = Maxammo;
 
     }
@@ -43,11 +43,11 @@ public class Gun : MonoBehaviour {
         
             
             currentAmmo--;
-            Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
+            GameObject newBullet = Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
+        newBullet.GetComponent<Bullet>().move = GetComponent<Movment>();
             RaycastHit2D hitInfo = Physics2D.Raycast(FirePoint.position, FirePoint.right);
             
 
 
     }
-    
 }
