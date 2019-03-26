@@ -3,10 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - BulletproofVest
-  - BulletproofHelmet
-  - Bullet
+  tags: [grabbable, BulletproofVest, BulletproofHelmet, Bullet]
   layers:
   - Default
   - TransparentFX
@@ -41,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Player
+    uniqueID: 3164076477
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
