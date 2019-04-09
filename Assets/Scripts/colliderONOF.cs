@@ -8,23 +8,23 @@ public class colliderONOF : MonoBehaviour {
     public bool move;
     public Movment movement;
     public SpriteRenderer sp;
-    public bool GUNONOF;
     public Collider2D gunarea;
-    public Collider2D grabablearea;
-    private Grabbscript grab;
+    //public Collider2D grabablearea;
     public bool holdingGun;
-    public bool playerison;
+    public int Ammo = 1;
+    public bool shooting;
+    public bool Ammoo;
 
     void Start()
     {
         dissablecollider2d.enabled = false;
-        gunarea.enabled = false;
-        
-           
-    }
-    void Update () {
+        //gunarea.enabled = false;
+         }
+   
 
-		if(move == true)
+    void Update () {
+        
+        if (move == true)
         {
             dissablecollider2d.enabled = true;
             rbody2.bodyType = RigidbodyType2D.Dynamic;
@@ -36,16 +36,16 @@ public class colliderONOF : MonoBehaviour {
         }
         if(holdingGun == true)
         {
-            grabablearea.enabled = false;
-            gunarea.enabled = false;
+           // grabablearea.enabled = false;
+            gunarea.enabled = true;
             sp.enabled = false;
         }
         if (holdingGun == false)
         {
-            grabablearea.enabled = true;
+          //  grabablearea.enabled = true;
             sp.enabled = true;
         }
-      
+       
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -78,4 +78,5 @@ public class colliderONOF : MonoBehaviour {
         movement = null;
        
     }
+   
 }

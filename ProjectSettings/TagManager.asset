@@ -9,6 +9,10 @@ TagManager:
   - Thrown
   - Player1
   - Player2
+  - Handgun
+  - Shotgun
+  - Player3
+  - Player4
   layers:
   - Default
   - TransparentFX
@@ -19,7 +23,7 @@ TagManager:
   - 
   - 
   - Player
-  - 
+  - Shotgun
   - 
   - 
   - 

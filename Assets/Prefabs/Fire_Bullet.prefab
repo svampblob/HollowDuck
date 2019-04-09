@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 3328826167327289454}
   - component: {fileID: 1920166783796893550}
   - component: {fileID: 961317166486412058}
-  - component: {fileID: 1483209775080981045}
   - component: {fileID: 3220205888881215030}
+  - component: {fileID: 9217500450339604856}
+  - component: {fileID: 2989294308291508667}
   m_Layer: 0
   m_Name: Fire_Bullet
   m_TagString: Untagged
@@ -116,21 +117,6 @@ PolygonCollider2D:
       - {x: 0.27785587, y: -0.08080959}
       - {x: 0.27785605, y: -0.0716192}
       - {x: 0.2616191, y: -0.05619192}
---- !u!114 &1483209775080981045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4557775904167280654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97b028bc1a03a97429d12cff2366875f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 20
-  Rb: {fileID: 3220205888881215030}
-  damage: 1
 --- !u!50 &3220205888881215030
 Rigidbody2D:
   serializedVersion: 4
@@ -152,3 +138,41 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &9217500450339604856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4557775904167280654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb71923d786250047bb982ffeb3a4778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 2989294308291508667}
+  speed: 20
+  Rb: {fileID: 3220205888881215030}
+  damage: 1
+  move: {fileID: 0}
+  TimeToDestroy: 0.8
+  Player1: {fileID: 0}
+--- !u!95 &2989294308291508667
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4557775904167280654}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
