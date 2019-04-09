@@ -22,7 +22,7 @@ public class ReadyUp : MonoBehaviour
         Players4();
         if (Input.GetKeyDown(KeyCode.JoystickButton7))
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("Test map");
 
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton1))
