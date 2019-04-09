@@ -5,43 +5,44 @@ using UnityEngine;
 public class Grabbscript : MonoBehaviour
 {
     public bool grabbed;
-    public float distanceX = 2f;
     public Transform holdpoint;
     public float throwpower = 15f;
-    public LayerMask notgrabbed;
-
-    private Gun equipped;
+    public GUNS equipped;
     public Movment move;
-    public ShootingAnimation SA;
-    public int Player;
-    public string stringformat;
-    public string stringformat2;
-    public bool grab;
-
-
     public GameObject weapon;
     public Collider2D grabbablearea;
-
-    public bool holdingGun;
+    public colliderONOF colllll;
     public bool ungrabbed;
-
     public float countdowntimer = 0f;
     public float maxscountdowntime = 1.5f;
-    public bool grabbavlearea_ONOF = false;
+    public bool thrown;
+    public bool holdingHandGun;
+    public bool holdingShotGun;
+    public bool Shooting;
 
     void Start()
     {
         
         ungrabbed = false;
-        Player = move.Player;
-        stringformat = move.Grabbkey;
-        stringformat2 = move.ungrabbed;
+        
     }
+    
     private void OnTriggerStay2D(Collider2D collision)
-    {   
+    {
+        if (collision.tag == "Handgun")
+        {
+            print("Handgun");
+            holdingHandGun = true;
+        }
+        if (collision.tag == "Shotgun")
+        {
+            print("Shotgun");
+            holdingShotGun = true;
+        }
+
         if (collision.tag == "grabbable")
         {   
-            if (Input.GetButtonDown(stringformat + Player))
+            if (Input.GetButtonDown(move.Grabbkey + move.Player))
             {
                
                 if (move)
@@ -63,9 +64,19 @@ public class Grabbscript : MonoBehaviour
         }
         
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        holdingShotGun = false;
+        holdingHandGun = false;
+    }
 
     void Update()
     {
+        if(Shooting == true)
+        {
+            equipped.shooting = true;
+        }
+       
         if(grabbed == true)
         {
             grabbablearea.enabled = false;
@@ -85,37 +96,102 @@ public class Grabbscript : MonoBehaviour
         }
         
         
-        if (Input.GetButtonDown(stringformat2 + Player) && grabbed == true)
+        if (Input.GetButtonDown(move.ungrabbed + move.Player) && grabbed == true)
         {
             unequiped();
+        }
+        if(Input.GetButtonDown(move.ShootingKey + move.Player))
+        {
+            
         }
     }
 
     private void unequiped()
     {
-        move.holdingGun = false;
-        countdowntimer = 0f;
-        ungrabbed = true;
-        weapon.GetComponent<colliderONOF>().move = true;
-        equipped = null;
-        weapon.transform.parent = null;
-        if (weapon.transform.parent = null)
+        if(Input.GetButtonDown(move.ungrabbed + move.Player))
         {
-            weapon.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 1) * throwpower;
+            move.holdingShotGun = false;
+            move.holdingHandGun = false;
+            holdingShotGun = false;
+            holdingHandGun = false;
+            countdowntimer = 0f;
+            ungrabbed = true;
+         
+            weapon.GetComponent<colliderONOF>().move = true;
+            weapon.GetComponent<colliderONOF>().holdingGun = false;
+            equipped = null;
+            if(ungrabbed == true)
+            {
+                if(move.right == true)
+                {
+                    if (weapon.transform.parent != null)
+                    {
+                        weapon.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.25f) * throwpower;
+                        thrown = true;
+                        weapon.transform.parent = null;
+
+                    }
+                    else
+                    {
+                        thrown = false;
+                    }
+                    grabbed = false;
+                }
+                if(move.right == false)
+                {
+                    throwpower = throwpower * -1;
+                    if (weapon.transform.parent != null)
+                    {
+                        weapon.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.25f) * throwpower;
+                        thrown = true;
+                        weapon.transform.parent = null;
+
+                    }
+                    else
+                    {
+                        thrown = false;
+                    }
+                    grabbed = false;
+                }
+            }
+            
         }
-        grabbed = false;
+        
     }
 
     private void Grab(Collider2D collision)
     {
-        move.holdingGun = true;
+        
+        if (holdingHandGun == true)
+       {
+            move.holdingHandGun = true;
+       }
+       if(holdingShotGun == true)
+       {
+            move.holdingShotGun = true;
+       } 
+       
         ungrabbed = false;
         grabbed = true;
         weapon = collision.gameObject;
+        colllll = weapon.GetComponent<colliderONOF>();
         collision.GetComponent<colliderONOF>().move = false;
-        equipped = collision.GetComponent<Gun>();
+        collision.GetComponent<colliderONOF>().holdingGun = true;
+        equipped = collision.GetComponent<GUNS>();
         collision.transform.parent = holdpoint;
-
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Thrown")
+        {
+            ungrabbed = true;
+            throwpower = 2f;
+            weapon.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.25f) * throwpower;
+        }
+        if(ungrabbed == true)
+        {
+            throwpower = 12.5f;
+        }
     }
 
 }

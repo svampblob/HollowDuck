@@ -8,15 +8,23 @@ public class colliderONOF : MonoBehaviour {
     public bool move;
     public Movment movement;
     public SpriteRenderer sp;
-    public bool GUNONOF;
+    public Collider2D gunarea;
+    //public Collider2D grabablearea;
+    public bool holdingGun;
+    public int Ammo = 1;
+    public bool shooting;
+    public bool Ammoo;
+
     void Start()
     {
         dissablecollider2d.enabled = false;
-        
-    }
-    void Update () {
+        //gunarea.enabled = false;
+         }
+   
 
-		if(move == true)
+    void Update () {
+        
+        if (move == true)
         {
             dissablecollider2d.enabled = true;
             rbody2.bodyType = RigidbodyType2D.Dynamic;
@@ -26,14 +34,49 @@ public class colliderONOF : MonoBehaviour {
             dissablecollider2d.enabled = false;
             rbody2.bodyType = RigidbodyType2D.Kinematic;
         }
-        if(movement.holdingGun == true)
+        if(holdingGun == true)
         {
-            
+           // grabablearea.enabled = false;
+            gunarea.enabled = true;
             sp.enabled = false;
         }
-        if (movement.holdingGun == false)
+        if (holdingGun == false)
         {
+          //  grabablearea.enabled = true;
             sp.enabled = true;
         }
+       
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        
+        if(collision.tag == "Player1")
+        {
+            movement = GameObject.FindGameObjectWithTag("Player1").GetComponent<Movment>();
+         
+            
+        }
+        if (collision.tag == "Player2")
+        {
+           movement = GameObject.FindGameObjectWithTag("Player2").GetComponent<Movment>();
+      
+        }
+        if (collision.tag == "Player3")
+        {
+            movement = GameObject.FindGameObjectWithTag("Player3").GetComponent<Movment>();
+     
+        }
+        if (collision.tag == "Player4")
+        {
+            movement = GameObject.FindGameObjectWithTag("Player4").GetComponent<Movment>();
+        
+        }
+       
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        movement = null;
+       
+    }
+   
 }
