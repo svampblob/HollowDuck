@@ -14,7 +14,7 @@ public class GUNS : MonoBehaviour {
     public int Ammo;
     public Amoshell ammo;
     public ShootingAnimation shoot;
-
+    public AudioSource source;
     
     void Update()
     {
@@ -22,9 +22,12 @@ public class GUNS : MonoBehaviour {
        if(shooting == true)
        {
             Shoot();
-       }
+            shoot.shooting = true;
+            
+        }
        if(shooting == false)
        {
+            shoot.shooting = false;
             ammo.droppamoshell = false;
        }
        if(Ammo <= 0)
@@ -38,11 +41,13 @@ public class GUNS : MonoBehaviour {
        
        if(NoAmmo == false)
        {
-            
-                GameObject newBullet = Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
+            source.Play();
+
+            Ammo --;
+            GameObject newBullet = Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
                 RaycastHit2D hitInfo = Physics2D.Raycast(FirePoint.position, FirePoint.right);
                 ammo.droppamoshell = true;
-                shoot.shooting = true;
+                
             if (hitInfo)
                 {
                     Player player = hitInfo.transform.GetComponent<Player>();
@@ -52,7 +57,7 @@ public class GUNS : MonoBehaviour {
                     }
 
                 }
-            Ammo--;
+            
 
         }
        

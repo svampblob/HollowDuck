@@ -58,7 +58,7 @@ public class Armor : MonoBehaviour
             Destroy(col.gameObject);
         }
 
-            if (col.gameObject.GetComponent<Bullet>() != null)
+            if (col.gameObject.GetComponent<Bullet1>() != null)
             {
                 Destroy(col.gameObject);
 

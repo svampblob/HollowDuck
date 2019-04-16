@@ -16,6 +16,7 @@ TagManager:
   - BulletproofVest
   - BulletproofHelmet
   - Bullet
+  - Grenade
   layers:
   - Default
   - TransparentFX
@@ -31,8 +32,6 @@ TagManager:
   - armor
   - 'bullet '
   - gun
-  - 
-  - 
   - 
   - 
   - 
