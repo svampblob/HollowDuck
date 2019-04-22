@@ -93,12 +93,18 @@ public class Grabbscript : MonoBehaviour
         }
         if(Shooting == true)
         {
-            equipped.shooting = true;
+            if(grabbed == true)
+            {
+                equipped.shooting = true;
+            }
         }
        if(Shooting == false)
        {
-            equipped.shooting = false;
-       }
+            if (grabbed == true)
+            {
+                equipped.shooting = false;
+            }
+        }
         if(grabbed == true)
         {
             grabbablearea.enabled = false;
