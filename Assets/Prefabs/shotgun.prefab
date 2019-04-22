@@ -186,6 +186,7 @@ MonoBehaviour:
   shooting: 0
   NoAmmo: 0
   Ammo: 1
+  minus_Ammo: 1
   ammo: {fileID: 1838774059971956245}
   shoot: {fileID: 1521475271}
   source: {fileID: 1451165565}

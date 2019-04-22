@@ -36,7 +36,7 @@ public class Bullet : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-          //  Debug.Log("[0]", score);
+          
             Debug.Log("oh no");
         }
     }
@@ -45,11 +45,23 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        Player player = hitInfo.GetComponent<Player>();
-        if (player != null)
+        if(hitInfo.tag == "Player1")
         {
-
-            player.TakeDamage(damage);
+            Destroy(gameObject);
+            shooter.SendMessage("AddToScore", 5);
+        }
+        if (hitInfo.tag == "Player2")
+        {
+            Destroy(gameObject);
+            shooter.SendMessage("AddToScore", 5);
+        }
+        if (hitInfo.tag == "Player3")
+        {
+            Destroy(gameObject);
+            shooter.SendMessage("AddToScore", 5);
+        }
+        if (hitInfo.tag == "Player4")
+        {
             Destroy(gameObject);
             shooter.SendMessage("AddToScore", 5);
         }

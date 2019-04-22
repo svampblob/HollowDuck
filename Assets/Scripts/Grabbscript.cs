@@ -78,6 +78,19 @@ public class Grabbscript : MonoBehaviour
 
     void Update()
     {
+        if(grabbed == true)
+        {
+           if(move.left == true)
+           {
+                equipped.changedirectionleft = true;
+                equipped.changedirectionright = false;
+            }
+           if(move.right == true)
+            {
+                equipped.changedirectionright = true;
+                equipped.changedirectionleft = false;
+            }
+        }
         if(Shooting == true)
         {
             equipped.shooting = true;
@@ -90,29 +103,14 @@ public class Grabbscript : MonoBehaviour
         {
             grabbablearea.enabled = false;
         }
-        if (ungrabbed == true)
-        {
-           
-                countdowntimer += Time.deltaTime;
-                if (countdowntimer > maxscountdowntime)
-                {
-                   
-                    grabbablearea.enabled = true;
-                    ungrabbed = false;
-                    countdowntimer = 0f;
-                }
-            
-        }
+        
         
         
         if (Input.GetButtonDown(move.ungrabbed + move.Player) && grabbed == true)
         {
             unequiped();
         }
-        if(Input.GetButtonDown(move.ShootingKey + move.Player))
-        {
-            
-        }
+        
     }
 
     private void unequiped()
@@ -127,9 +125,11 @@ public class Grabbscript : MonoBehaviour
             holdingGrenade = false;
             countdowntimer = 0f;
             ungrabbed = true;
-         
+            grabbablearea.enabled = true;
+            grabbed = false;
             weapon.GetComponent<colliderONOF>().move = true;
             weapon.GetComponent<colliderONOF>().holdingGun = false;
+
             equipped = null;
             if(ungrabbed == true)
             {
@@ -146,7 +146,7 @@ public class Grabbscript : MonoBehaviour
                     {
                         thrown = false;
                     }
-                    grabbed = false;
+                    
                 }
                 if(move.right == false)
                 {

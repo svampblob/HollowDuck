@@ -17,7 +17,8 @@ public class Movment : MonoBehaviour
     public bool right;
     public bool left;
     // vareabel till Jumpfunction
-    public static float Jumpspeed = 15f;
+    public float Jumpspeed = 15f;
+    public bool IsJumping;
     // Vareabler till crouch animation och crouch collider2D
     public Collider2D disablecollider2D;
     public Collider2D slidingcollider;
@@ -299,6 +300,7 @@ public class Movment : MonoBehaviour
             
             if (groundcheck.isgrounded > 0)
             {
+                print("sliding;");
                 canslide = true;
                 Slide.Play();
             }
@@ -324,8 +326,9 @@ public class Movment : MonoBehaviour
             {
                 rbody.velocity = new Vector2(rbody.velocity.x, Jumpspeed);
                 Jump.Play();
+           
             }
-
+            
         }
         if (groundcheck.isgrounded == 0)
         {
@@ -472,8 +475,10 @@ public class Movment : MonoBehaviour
         if (canslide == true)
         {
             sliding = true;
+        }
+        if (sliding == true)
+        {
             movespeed = 12f;
-            
         }
         if (sliding == true)
         {
