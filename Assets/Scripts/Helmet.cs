@@ -54,7 +54,7 @@ public class Helmet : MonoBehaviour
             Destroy(col.gameObject);
         }
 
-        if (col.gameObject.GetComponent<Bullet>())
+        if (col.gameObject.GetComponent<Bullet1>())
         {
             Destroy(col.gameObject);
 

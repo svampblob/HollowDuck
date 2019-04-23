@@ -18,6 +18,7 @@ public class Grabbscript : MonoBehaviour
     public bool thrown;
     public bool holdingHandGun;
     public bool holdingShotGun;
+    public bool holdingGrenade;
     public bool Shooting;
 
     void Start()
@@ -39,7 +40,11 @@ public class Grabbscript : MonoBehaviour
             print("Shotgun");
             holdingShotGun = true;
         }
-
+        if(collision.tag == "Grenade")
+        {
+            print("Grenade");
+            holdingGrenade = true;
+        }
         if (collision.tag == "grabbable")
         {   
             if (Input.GetButtonDown(move.Grabbkey + move.Player))
@@ -68,42 +73,50 @@ public class Grabbscript : MonoBehaviour
     {
         holdingShotGun = false;
         holdingHandGun = false;
+        holdingGrenade = false;
     }
 
     void Update()
     {
+        if(grabbed == true)
+        {
+           if(move.left == true)
+           {
+                equipped.changedirectionleft = true;
+                equipped.changedirectionright = false;
+            }
+           if(move.right == true)
+            {
+                equipped.changedirectionright = true;
+                equipped.changedirectionleft = false;
+            }
+        }
         if(Shooting == true)
         {
-            equipped.shooting = true;
+            if(grabbed == true)
+            {
+                equipped.shooting = true;
+            }
         }
-       
+       if(Shooting == false)
+       {
+            if (grabbed == true)
+            {
+                equipped.shooting = false;
+            }
+        }
         if(grabbed == true)
         {
             grabbablearea.enabled = false;
         }
-        if (ungrabbed == true)
-        {
-           
-                countdowntimer += Time.deltaTime;
-                if (countdowntimer > maxscountdowntime)
-                {
-                   
-                    grabbablearea.enabled = true;
-                    ungrabbed = false;
-                    countdowntimer = 0f;
-                }
-            
-        }
+        
         
         
         if (Input.GetButtonDown(move.ungrabbed + move.Player) && grabbed == true)
         {
             unequiped();
         }
-        if(Input.GetButtonDown(move.ShootingKey + move.Player))
-        {
-            
-        }
+        
     }
 
     private void unequiped()
@@ -112,13 +125,17 @@ public class Grabbscript : MonoBehaviour
         {
             move.holdingShotGun = false;
             move.holdingHandGun = false;
+            move.holdingGrenade = false;
             holdingShotGun = false;
             holdingHandGun = false;
+            holdingGrenade = false;
             countdowntimer = 0f;
             ungrabbed = true;
-         
+            grabbablearea.enabled = true;
+            grabbed = false;
             weapon.GetComponent<colliderONOF>().move = true;
             weapon.GetComponent<colliderONOF>().holdingGun = false;
+
             equipped = null;
             if(ungrabbed == true)
             {
@@ -135,7 +152,7 @@ public class Grabbscript : MonoBehaviour
                     {
                         thrown = false;
                     }
-                    grabbed = false;
+                    
                 }
                 if(move.right == false)
                 {
@@ -170,7 +187,10 @@ public class Grabbscript : MonoBehaviour
        {
             move.holdingShotGun = true;
        } 
-       
+       if(holdingGrenade == true)
+        {
+            move.holdingGrenade = true;
+        }
         ungrabbed = false;
         grabbed = true;
         weapon = collision.gameObject;

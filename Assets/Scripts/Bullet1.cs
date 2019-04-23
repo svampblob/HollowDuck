@@ -5,19 +5,22 @@ using UnityEngine;
 
 public class Bullet1 : MonoBehaviour
 {
-    public Animator anim;
     public float speed = 20f;
     public Rigidbody2D Rb;
-    public int damage = 1;
-    public Movment move;
     public float TimeToDestroy = 0.8f;
-    public GameObject Player1;
+    public bool destroyItem;
 
     void Start()
     {
         Rb.velocity = transform.right * speed;
     }
-    
+    private void Update()
+    {
+        if(destroyItem == true)
+        {
+            Destroy(gameObject);
+        }
+    }
     private void OnEnable()
     {
         StartCoroutine(AutoDestroy(TimeToDestroy));
@@ -29,14 +32,38 @@ public class Bullet1 : MonoBehaviour
 
         Destroy(gameObject);
     }
-
+    private void OnCollisionEnter2D(Collision col)
+    {
+        if(col.gameObject.name == "Ground")
+        {
+            Destroy(col.gameObject);
+        }
+    }
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        Player player = hitInfo.GetComponent<Player>();
-        if (player != null)
+       if(hitInfo.tag == "Player1")
+       {
+            print("death");
+            destroyItem = true;
+       }
+       if (hitInfo.tag == "Player2")
         {
-            Destroy(gameObject);
+            print("death");
+            destroyItem = true;
         }
-
+       if (hitInfo.tag == "Player3")
+        {
+            print("death");
+            destroyItem = true;
+        }
+       if (hitInfo.tag == "Player4")
+        {
+            print("death");
+            destroyItem = true;
+        }
+       if(hitInfo.tag == "Ground")
+        {
+            destroyItem = true;
+        }
     }
 }

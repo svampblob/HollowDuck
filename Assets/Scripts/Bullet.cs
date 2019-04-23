@@ -29,25 +29,47 @@ public class Bullet : MonoBehaviour
         {
             speed = 20f;
         }
+        GetComponent<Bullet>().shooter = transform;
 
     }
-  
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+          
+            Debug.Log("oh no");
+        }
+    }
 
 
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        Player player = hitInfo.GetComponent<Player>();
-        if (player != null)
+        if(hitInfo.tag == "Player1")
         {
-
-            player.TakeDamage(damage);
             Destroy(gameObject);
-         
+            shooter.SendMessage("AddToScore", 5);
+        }
+        if (hitInfo.tag == "Player2")
+        {
+            Destroy(gameObject);
+            shooter.SendMessage("AddToScore", 5);
+        }
+        if (hitInfo.tag == "Player3")
+        {
+            Destroy(gameObject);
+            shooter.SendMessage("AddToScore", 5);
+        }
+        if (hitInfo.tag == "Player4")
+        {
+            Destroy(gameObject);
+            shooter.SendMessage("AddToScore", 5);
         }
     }
-   
-
+    void AddToScore(int points)
+    {
+        score += points;
+    }
 
 
 }

@@ -13,7 +13,11 @@ public class MultipleTargetCamera : MonoBehaviour
     public float zoomLimiter = 10f;
     private Vector3 velocity;
     private Camera cam;
-    
+
+
+    public Camera maincam;
+    public float shakeAmount = 0;
+
     void Start()
     {
         cam = GetComponent<Camera>();
@@ -86,5 +90,40 @@ public class MultipleTargetCamera : MonoBehaviour
 
 
         return bounds.center;
+    }
+    void Awake()
+    {
+        if (maincam == null)
+        {
+            maincam = cam;
+        }
+    }
+
+    public void shake(float amt, float lenght)
+    {
+        shakeAmount = amt;
+        InvokeRepeating("BeginShake", 0, 0.01f);
+        Invoke("StopShake", lenght);
+    }
+
+    void BeginShake()
+    {
+        if (shakeAmount > 0)
+        {
+            Vector3 campos = cam.transform.position;
+
+            float offsetX = Random.value * shakeAmount * 2 - shakeAmount;
+            float offsetY = Random.value * shakeAmount * 2 - shakeAmount;
+            campos.x += offsetX;
+            campos.y += offsetY;
+
+            cam.transform.position = campos;
+
+        }
+    }
+
+    void StopShake()
+    {
+        CancelInvoke("BeginShake");
     }
 }
