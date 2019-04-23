@@ -5,6 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public int health = 1;
+    public Bullet shooter;
+    public int score = 1;
     // public GameObject deathEffect;
 
 
@@ -25,6 +27,9 @@ public class Player : MonoBehaviour
         //Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
         Camera.main.GetComponent<MultipleTargetCamera>().targets.Remove(transform);
+        shooter.SendMessage("AddToScore", 5);
+
+   
     }
 
 

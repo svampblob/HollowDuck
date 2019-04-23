@@ -29,17 +29,9 @@ public class Bullet : MonoBehaviour
         {
             speed = 20f;
         }
-        GetComponent<Bullet>().shooter = transform;
 
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-          //  Debug.Log("[0]", score);
-            Debug.Log("oh no");
-        }
-    }
+  
 
 
 
@@ -51,13 +43,11 @@ public class Bullet : MonoBehaviour
 
             player.TakeDamage(damage);
             Destroy(gameObject);
-            shooter.SendMessage("AddToScore", 5);
+         
         }
     }
-    void AddToScore(int points)
-    {
-        score += points;
-    }
+   
+
 
 
 }
