@@ -32,13 +32,6 @@ public class Bullet1 : MonoBehaviour
 
         Destroy(gameObject);
     }
-    private void OnCollisionEnter2D(Collision col)
-    {
-        if(col.gameObject.name == "Ground")
-        {
-            Destroy(col.gameObject);
-        }
-    }
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
        if(hitInfo.tag == "Player1")
@@ -62,6 +55,10 @@ public class Bullet1 : MonoBehaviour
             destroyItem = true;
         }
        if(hitInfo.tag == "Ground")
+        {
+            destroyItem = true;
+        }
+       if(hitInfo.tag == "Armor")
         {
             destroyItem = true;
         }
