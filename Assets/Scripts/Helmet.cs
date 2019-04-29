@@ -9,14 +9,14 @@ public class Helmet : MonoBehaviour
     public bool IsHit;
     Rigidbody2D rb;
     float dirX, moveSpeed = 5f;
-
+    public Collider2D helnmetcollider2D;
     int healthPoints = 1, armorPoints = 1;
 
     [SerializeField]
     GameObject bulletproofHelmet = null;
 
-    [SerializeField]
-    Image healthpoints = null, armor = null;
+    //[SerializeField]
+    //Image healthpoints = null, armor = null;
 
     bool bulletproofHelmetIsOn = false;
 
@@ -26,73 +26,35 @@ public class Helmet : MonoBehaviour
     {
         bulletproofHelmet.SetActive(false);
         rb = GetComponent<Rigidbody2D>();
-        healthpoints.fillAmount = 1f;
-        armor.fillAmount = 0f;
+        helnmetcollider2D.enabled = false;
+        //healthpoints.fillAmount = 1f;
+        //armor.fillAmount = 0f;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-    
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag.Equals("BulletproofHelmet"))
         {
             bulletproofHelmet.SetActive(true);
             bulletproofHelmetIsOn = true;
-            healthpoints.fillAmount = 1f;
-            armor.fillAmount = 1f;
+            //healthpoints.fillAmount = 1f;
+            //armor.fillAmount = 1f;
 
-            healthPoints = 1;
+            //healthPoints = 1;
             armorPoints = 1;
 
-            healthPoints = 1;
-            armorPoints = 1;
-
+            //healthPoints = 1;
+            //armorPoints = 1;
+            helnmetcollider2D.enabled = true;
             Destroy(col.gameObject);
         }
 
-        if (col.gameObject.GetComponent<Bullet>())
+        if (col.tag == "Bullet")
         {
             Destroy(col.gameObject);
-
-
-            //    if (bulletproofHelmetIsOn)
-            //    {
-            //        armor.fillAmount -= 1f;
-
-
-            //        if (bulletproofHelmetIsOn)
-            //        {
-            //            armor.fillAmount -= 0.2f;
-
-            //            armorPoints -= 1;
-
-            //            if (armorPoints <= 0)
-            //            {
-            //                bulletproofHelmetIsOn = false;
-            //                bulletproofHelmet.SetActive(false);
-            //            }
         }
     }
                
                 
-                
-                //else
-                //{
-
-                //    healthpoints.fillAmount -= 1f;
-
-                //    healthpoints.fillAmount -= 0.2f;
-
-                //    healthPoints -= 1;
-
-                //    if (healthPoints <= 0)
-                //        Destroy(gameObject);
-                //}
-            //}
-
+               
 
 }

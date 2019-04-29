@@ -16,6 +16,9 @@ TagManager:
   - BulletproofVest
   - BulletproofHelmet
   - Bullet
+  - Grenade
+  - Void
+  - Armor
   layers:
   - Default
   - TransparentFX
@@ -49,12 +52,16 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
   m_SortingLayers:
   - name: Player
     uniqueID: 3164076477
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Lower-Ground
+    uniqueID: 1804747411
+    locked: 0
+  - name: Ground
+    uniqueID: 1298348545
     locked: 0

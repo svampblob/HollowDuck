@@ -14,27 +14,24 @@ public class ShootingAnimation : MonoBehaviour
     void Update()
     {
         Animation();
-
         
     }
     
     void Animation()
     {
             if (Gun)
-        
             {
-                if(Gun.NoAmmo == false)
-                {
-                    if (Gun.shooting == true)
+
+                    if (shooting == true)
                     {
                         anim.SetBool("IsShooting", true);
                     }
 
-                    if (Gun.shooting == false)
+                    if (shooting == false)
                     {
                         anim.SetBool("IsShooting", false);
                     }
-                }
+                
             }
                 
         

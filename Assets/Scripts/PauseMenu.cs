@@ -45,5 +45,11 @@ public class PauseMenu : MonoBehaviour
     {
         SceneManager.LoadScene("StartMenu");
     }
- 
+    public void Restart()
+    {
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+    }
+
+
+
 }
