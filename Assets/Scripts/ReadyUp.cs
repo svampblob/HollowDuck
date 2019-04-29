@@ -14,6 +14,8 @@ public class ReadyUp : MonoBehaviour
     public SpriteRenderer spriteRenderer3;
     public SpriteRenderer spriteRenderer4;
 
+
+   
     private void Update()
     {
         Players1();
@@ -22,7 +24,8 @@ public class ReadyUp : MonoBehaviour
         Players4();
         if (Input.GetKeyDown(KeyCode.JoystickButton7))
         {
-            SceneManager.LoadScene("Test_map");
+            SceneManager.LoadScene(Random.Range(5, 7));
+
 
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton1))
