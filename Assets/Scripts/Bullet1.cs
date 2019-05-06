@@ -9,6 +9,7 @@ public class Bullet1 : MonoBehaviour
     public Rigidbody2D Rb;
     public float TimeToDestroy = 0.8f;
     public bool destroyItem;
+    public GUNS  gunScript;
 
     void Start()
     {
@@ -19,6 +20,7 @@ public class Bullet1 : MonoBehaviour
         if(destroyItem == true)
         {
             Destroy(gameObject);
+            
         }
     }
     private void OnEnable()
@@ -38,7 +40,7 @@ public class Bullet1 : MonoBehaviour
        {
             print("death");
             destroyItem = true;
-       }
+        }
        if (hitInfo.tag == "Player2")
         {
             print("death");
