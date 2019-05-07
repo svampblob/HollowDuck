@@ -609,6 +609,7 @@ MonoBehaviour:
   Weaponholder: {fileID: 6886890244279971643}
   exp: {fileID: 4693555489841436691}
   cam: {fileID: 0}
+  gunScript: {fileID: 0}
 --- !u!82 &4693555489841436691
 AudioSource:
   m_ObjectHideFlags: 0
@@ -717,7 +718,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5d38380510750a4692c9f692335cfec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player1: {fileID: 1581953711, guid: 2a061355b9befe846a8b610276fdaf13, type: 3}
+  Player2: {fileID: 7183537494733936821, guid: 99e749503c46c514da648b6400498e4d, type: 3}
+  Player3: {fileID: 4123741311297171678, guid: 83e8c9ef6cc8ef743ac7c3ec7e182329, type: 3}
+  Player4: {fileID: 6886890244449010484, guid: 0f89c1dfdd2a7394ba8a07fd392c9e12, type: 3}
   score: 0
+  text1: {fileID: 0}
+  text2: {fileID: 0}
+  text3: {fileID: 0}
+  text4: {fileID: 0}
 --- !u!1 &6886890244562654459
 GameObject:
   m_ObjectHideFlags: 0
