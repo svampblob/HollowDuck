@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Kills : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Kills : MonoBehaviour
     private Kills kills2;
     private Kills kills3;
     private Kills kills4;
+    public int NmbrOfPlayers;
+
 
 
 
@@ -21,6 +24,11 @@ public class Kills : MonoBehaviour
     public TextMeshProUGUI text2;
     public TextMeshProUGUI text3;
     public TextMeshProUGUI text4;
+
+    private bool player1Null;
+    private bool player2Null;
+    private bool player3Null;
+    private bool player4Null;
 
     private void Awake()
     {
@@ -33,6 +41,30 @@ public class Kills : MonoBehaviour
     }
     private void Start()
     {
+        if (Player1 != null)
+        {
+            NmbrOfPlayers++;
+            player1Null = false;
+
+        }
+        if (Player2 != null)
+        {
+            NmbrOfPlayers++;
+            player2Null = false;
+
+        }
+        if (Player3 != null)
+        {
+            NmbrOfPlayers++;
+            player3Null = false;
+
+        }
+        if (Player4 != null)
+        {
+            NmbrOfPlayers++;
+            player4Null = false;
+
+        }
 
     }
     // Update is called once per frame
@@ -43,7 +75,40 @@ public class Kills : MonoBehaviour
         text3.text = "Player 3 score is " + kills3.score;
         text4.text = "Player 4 score is " + kills4.score;
 
+        if (Player1 == null && player1Null == false)
+        {
+            NmbrOfPlayers = NmbrOfPlayers - 1;
+            player1Null = true;
+        }
+        if (Player2 == null && player2Null == false)
+        {
+            NmbrOfPlayers = NmbrOfPlayers - 1;
+            player2Null = true;
 
+        }
+        if (Player3 == null && player3Null == false)
+        {
+            NmbrOfPlayers = NmbrOfPlayers - 1;
+            player3Null = true;
+
+        }
+        if (Player4 == null && player4Null == false)
+        {
+            NmbrOfPlayers = NmbrOfPlayers - 1;
+            player4Null = true;
+
+
+        }
+        if (NmbrOfPlayers <= 1)
+        {
+            Invoke("VictorySequence", 2);
+        }
+      
+
+    }
+    public void VictorySequence()
+    {
+        SceneManager.LoadScene(Random.Range(5, 7));
     }
     void AddToScore()
     {

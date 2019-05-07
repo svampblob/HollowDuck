@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class HowToPlay : MonoBehaviour
 {
-    public void ToMainMenu()
+    private void Update()
     {
-        SceneManager.LoadScene("StartMenu");
+        if (Input.GetKeyDown(KeyCode.JoystickButton1))
+        {
+            SceneManager.LoadScene("StartMenu");
 
+        }
     }
 }
