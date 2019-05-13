@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ReadyUp : MonoBehaviour
 {
+    Kills kills;
     bool player1;
     bool player2;
     bool player3;
@@ -24,8 +25,10 @@ public class ReadyUp : MonoBehaviour
         Players4();
         if (Input.GetKeyDown(KeyCode.JoystickButton7))
         {
-            SceneManager.LoadScene(Random.Range(5, 7));
-
+            SceneManager.LoadScene(Random.Range(5, 8));
+            PlayerPrefs.DeleteAll();
+            kills.playedMatches = 0;
+            
 
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton1))

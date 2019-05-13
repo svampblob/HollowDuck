@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class Kills : MonoBehaviour
 {
+    private Animator anim;
+
+    public int playedMatches;
+
     public GameObject Player1;
     public GameObject Player2;
     public GameObject Player3;
@@ -15,8 +19,6 @@ public class Kills : MonoBehaviour
     private Kills kills3;
     private Kills kills4;
     public int NmbrOfPlayers;
-
-
 
 
     public int score;
@@ -36,6 +38,7 @@ public class Kills : MonoBehaviour
         kills2 = Player2.GetComponent<Kills>();
         kills3 = Player3.GetComponent<Kills>();
         kills4 = Player4.GetComponent<Kills>();
+
 
 
     }
@@ -65,15 +68,20 @@ public class Kills : MonoBehaviour
             player4Null = false;
 
         }
+        kills1.score = PlayerPrefs.GetInt("Player1");
+        kills2.score = PlayerPrefs.GetInt("Player2");
+        kills3.score = PlayerPrefs.GetInt("Player3");
+        kills4.score = PlayerPrefs.GetInt("Player4");
+        anim = GetComponent<Animator>();
 
     }
     // Update is called once per frame
     void Update()
     {
-        text1.text = "Player 1 score is " + kills1.score;
-        text2.text = "Player 2 score is " + kills2.score;
-        text3.text = "Player 3 score is " + kills3.score;
-        text4.text = "Player 4 score is " + kills4.score;
+        text1.text = "Player 1 kills " + kills1.score;
+        text2.text = "Player 2 kills " + kills2.score;
+        text3.text = "Player 3 kills " + kills3.score;
+        text4.text = "Player 4 kills " + kills4.score;
 
         if (Player1 == null && player1Null == false)
         {
@@ -102,19 +110,31 @@ public class Kills : MonoBehaviour
         if (NmbrOfPlayers <= 1)
         {
             Invoke("VictorySequence", 2);
+            PlayerPrefs.SetInt("Player1", kills1.score);
+            PlayerPrefs.SetInt("Player2", kills2.score);
+            PlayerPrefs.SetInt("Player3", kills3.score);
+            PlayerPrefs.SetInt("Player4", kills4.score);
+
         }
-      
+        if (playedMatches == 3)
+        {
+            Time.timeScale = 0f;
+
+            Invoke("VictorySequence", 10);
+
+        }
+
 
     }
     public void VictorySequence()
     {
         SceneManager.LoadScene(Random.Range(5, 7));
+        playedMatches++;
+        Time.timeScale = 1f;
     }
     void AddToScore()
     {
         score = score + 1;
-        
-        
     }
 
 }
