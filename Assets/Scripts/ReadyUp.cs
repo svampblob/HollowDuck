@@ -6,17 +6,37 @@ using UnityEngine.SceneManagement;
 public class ReadyUp : MonoBehaviour
 {
     Kills kills;
-    bool player1;
-    bool player2;
-    bool player3;
-    bool player4;
-    public SpriteRenderer spriteRenderer1;
-    public SpriteRenderer spriteRenderer2;
-    public SpriteRenderer spriteRenderer3;
-    public SpriteRenderer spriteRenderer4;
+    public bool player1;
+    public bool player2;
+    public bool player3;
+    public bool player4;
+
+    public SpriteRenderer Player1;
+    public SpriteRenderer Player2;
+    public SpriteRenderer Player3;
+    public SpriteRenderer Player4;
+    public SpriteRenderer noPlayer1;
+    public SpriteRenderer noPlayer2;
+    public SpriteRenderer noPlayer3;
+    public SpriteRenderer noPlayer4;
+    public SpriteRenderer Ready1;
+    public SpriteRenderer Ready2;
+    public SpriteRenderer Ready3;
+    public SpriteRenderer Ready4;
 
 
-   
+    private void Start()
+    {
+
+
+
+        player1 = false;
+        player2 = false;
+        player3 = false;
+        player4 = false;
+    }
+
+
     private void Update()
     {
         Players1();
@@ -28,7 +48,7 @@ public class ReadyUp : MonoBehaviour
             SceneManager.LoadScene(Random.Range(5, 8));
             PlayerPrefs.DeleteAll();
             kills.playedMatches = 0;
-            
+
 
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton1))
@@ -36,6 +56,22 @@ public class ReadyUp : MonoBehaviour
             SceneManager.LoadScene("StartMenu");
 
         }
+        //Player1
+        Player1.enabled = player1;
+        noPlayer1.enabled = !player1;
+        Ready1.enabled = player1;
+        //Player2
+        Player2.enabled = player2;
+        noPlayer2.enabled = !player2;
+        Ready2.enabled = player2;
+        //Player3
+        Player3.enabled = player3;
+        noPlayer3.enabled = !player3;
+        Ready3.enabled = player3;
+        //Player4
+        Player4.enabled = player4;
+        noPlayer4.enabled = !player4;
+        Ready4.enabled = player4;
     }
 
     public void Players1()
@@ -43,31 +79,30 @@ public class ReadyUp : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
             player1 = !player1;
-            spriteRenderer1.enabled = player1;
         }
+
     }
     public void Players2()
     {
         if (Input.GetKeyDown(KeyCode.Joystick2Button0))
         {
             player2 = !player2;
-            spriteRenderer2.enabled = player2;
         }
+
     }
     public void Players3()
     {
         if (Input.GetKeyDown(KeyCode.Joystick3Button0))
         {
             player3 = !player3;
-            spriteRenderer3.enabled = player3;
         }
+
     }
     public void Players4()
     {
         if (Input.GetKeyDown(KeyCode.Joystick4Button0))
         {
             player4 = !player4;
-            spriteRenderer4.enabled = player4;
         }
 
     }
