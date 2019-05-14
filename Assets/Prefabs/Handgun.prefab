@@ -426,8 +426,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FirePoint: {fileID: 6429983609882614002}
-  bulletPrefab: {fileID: 4557775904167280654, guid: c92e08e6baad09c4db4a147c26800ba7,
-    type: 3}
+  bullet1: {fileID: 4557775904167280654, guid: 40bf2ee2e899c764c90ebf0a11b21d35, type: 3}
+  bullet2: {fileID: 4557775904167280654, guid: 7e1c95acd61c0ca4c91ca0d118d48822, type: 3}
+  bullet3: {fileID: 4557775904167280654, guid: 6f8da571c02a9c148a67ea38bb787513, type: 3}
+  bullet4: {fileID: 4557775904167280654, guid: c92e08e6baad09c4db4a147c26800ba7, type: 3}
   damage: 1
   shooting: 0
   NoAmmo: 0
@@ -438,6 +440,7 @@ MonoBehaviour:
   source: {fileID: 42031990}
   changedirectionleft: 0
   changedirectionright: 0
+  shooter: {fileID: 0}
 --- !u!82 &42031990
 AudioSource:
   m_ObjectHideFlags: 0
