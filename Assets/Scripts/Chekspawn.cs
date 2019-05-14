@@ -6,7 +6,7 @@ public class Chekspawn : MonoBehaviour
 {
     public RandomWeaponSpawner Ran;
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.tag == "grabbable")
         {

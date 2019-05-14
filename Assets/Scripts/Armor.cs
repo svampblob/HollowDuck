@@ -3,54 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Armor : MonoBehaviour
-{
+public class Armor : MonoBehaviour {
+    public armorOnPlayer arm;
+    
+	public int healthPoints = 5, armorPoints = 5;
 
-    Rigidbody2D rb;
-    float dirX, moveSpeed = 5f;
-    public Collider2D armorcol;
-    int healthPoints = 1, armorPoints = 1;
+	[SerializeField]
+	GameObject bulletproofVest = null;
 
-    [SerializeField]
-    GameObject bulletproofVest = null;
+	public bool bulletproofVestIsOn = false;
 
-    //[SerializeField]
-    //Image healthpoints = null, armor = null;
-
-    bool bulletproofVestIsOn = false;
-
-
-    // Use this for initialization
-    void Start()
+	void Start () {
+		bulletproofVest.SetActive (false);
+	}
+    void Update()
     {
-        armorcol.enabled = false;
-        bulletproofVest.SetActive(false);
-        rb = GetComponent<Rigidbody2D>();
-       // armor.fillAmount = 0f;
+        if(bulletproofVestIsOn == false)
+        {
+            bulletproofVest.SetActive(false);
+        }
     }
     void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.tag.Equals("BulletproofVest"))
-        {
-            bulletproofVest.SetActive(true);
-            bulletproofVestIsOn = true;
-           // healthpoints.fillAmount = 1f;
-           // armor.fillAmount = 1f;
-
-           // healthPoints = 1;
-            armorPoints = 1;
-            armorcol.enabled = true;
-            //healthPoints = 1;
-            //armorPoints = 1;
+	{
+		if (col.gameObject.name.Equals ("BulletproofVest")) {
+			bulletproofVest.SetActive (true);
+			bulletproofVestIsOn = true;
+			healthPoints = 5;
+			armorPoints = 5;
 
             Destroy(col.gameObject);
         }
 
-            if (col.tag == "Bullet")
-            {
-               Destroy(col.gameObject);
-            }
+		if (col.gameObject.GetComponent<Bullet1>() != null) {
+			if (bulletproofVestIsOn) {
+				armorPoints -= 1;
+			} else {
+				healthPoints -= 1;
+			}
+		}
+
+	}
 
 
-    }
 }

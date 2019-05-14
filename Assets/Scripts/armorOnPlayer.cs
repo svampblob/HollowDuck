@@ -2,14 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class armorOnPlayer : MonoBehaviour {
-    public bool IsHit;
-    private void OnTriggerEnter2D(Collider2D collision)
+public class armorOnPlayer : MonoBehaviour
+{
+    public Armor arm;
+    public GameObject armor;
+    public bool ArmorHit;
+
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        IsHit = true;
-        if(IsHit == true)
+        if (collision.gameObject.GetComponent<Bullet1>())
         {
-            Destroy(gameObject);
+            print("Armorishit");
+            arm.bulletproofVestIsOn = false;
+            ArmorHit = true;
+        }
+        else
+        {
+            ArmorHit = false;
         }
     }
 }

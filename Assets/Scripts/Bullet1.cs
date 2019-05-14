@@ -9,12 +9,16 @@ public class Bullet1 : MonoBehaviour
     public Rigidbody2D Rb;
     public float TimeToDestroy = 0.8f;
     public bool destroyItem;
-
+    public bool armor;
+    public int Player1;
+    public int Player2;
+    public int Player3;
+    public int Player4;
     void Start()
     {
         Rb.velocity = transform.right * speed;
     }
-    private void Update()
+    void Update()
     {
         if(destroyItem == true)
         {
@@ -32,26 +36,30 @@ public class Bullet1 : MonoBehaviour
 
         Destroy(gameObject);
     }
+    
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
+        if (hitInfo.gameObject.GetComponent<armorOnPlayer>())
+        {
+            Destroy(gameObject);
+        }
        if(hitInfo.tag == "Player1")
        {
-            print("death");
-            destroyItem = true;
+            Player1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player>().health = 0;
        }
        if (hitInfo.tag == "Player2")
         {
-            print("death");
+            Player2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player>().health = 0;
             destroyItem = true;
         }
        if (hitInfo.tag == "Player3")
         {
-            print("death");
+            Player3 = GameObject.FindGameObjectWithTag("Player3").GetComponent<Player>().health = 0;
             destroyItem = true;
         }
        if (hitInfo.tag == "Player4")
         {
-            print("death");
+            Player4 = GameObject.FindGameObjectWithTag("Player4").GetComponent<Player>().health = 0;
             destroyItem = true;
         }
        if(hitInfo.tag == "Ground")
@@ -59,8 +67,10 @@ public class Bullet1 : MonoBehaviour
             destroyItem = true;
         }
        if(hitInfo.tag == "Armor")
-        {
+       {
+            armor = GameObject.FindGameObjectWithTag("Armor").GetComponent<Armor>().bulletproofVestIsOn = false;
             destroyItem = true;
-        }
+       }
+     
     }
 }

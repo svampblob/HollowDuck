@@ -333,6 +333,12 @@ MonoBehaviour:
   Ammo: 1
   shooting: 0
   Ammoo: 0
+  thrown: 0
+  droppweapon: 0
+  Player1: 0
+  Player2: 0
+  Player3: 0
+  Player4: 0
 --- !u!95 &8178460469068463221
 Animator:
   serializedVersion: 3
@@ -426,9 +432,12 @@ MonoBehaviour:
   shooting: 0
   NoAmmo: 0
   Ammo: 1
+  minus_Ammo: 1
   ammo: {fileID: 5823942188586669044}
   shoot: {fileID: 7157700767300659390}
   source: {fileID: 42031990}
+  changedirectionleft: 0
+  changedirectionright: 0
 --- !u!82 &42031990
 AudioSource:
   m_ObjectHideFlags: 0
@@ -569,7 +578,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.010555863, y: 0.042223454}
+  m_Offset: {x: -0.016381025, y: 0.013096929}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -580,5 +589,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.20479226, y: 0.099234104}
+  m_Size: {x: 0.09993696, y: 0.040981054}
   m_EdgeRadius: 0

@@ -47,6 +47,7 @@ public class Movment : MonoBehaviour
     public AudioSource Slide;
     public ShootingAnimation sp;
     public Grabbscript grab;
+    public Armor arm;
 
     void Start()
     {
@@ -54,7 +55,7 @@ public class Movment : MonoBehaviour
         disablecollider2D.enabled = false;
         rbody = GetComponent<Rigidbody2D>();
         Crouch = false;
-
+        arm = GetComponent<Armor>();
     }
     void Update()
     {
@@ -68,7 +69,6 @@ public class Movment : MonoBehaviour
 
     public void Movefunction()
     {
-
 
         rbody.velocity = new Vector2(Input.GetAxisRaw(movekey + Player) * movespeed, rbody.velocity.y);
 
@@ -84,8 +84,6 @@ public class Movment : MonoBehaviour
             moving = true;
             left = true;
             right = false;
-            //sp.left = true;
-            //sp.right = false;
             if (holdingHandGun == true)
             {
                 animator.SetBool("Gun_Run", true);
@@ -162,9 +160,6 @@ public class Movment : MonoBehaviour
             weapondirection = false;
             moving = true;
             right = true;
-            //sp.right = true;
-            //sp.left = false;
-
             if (holdingHandGun == true)
             {
                 animator.SetBool("Gun_Run", true);
@@ -460,8 +455,6 @@ public class Movment : MonoBehaviour
         }
         if (Crouch == false)
         {
-            idlecollider.enabled = true;
-            disablecollider2D.enabled = false;
             movespeed = 6f;
             animator.SetBool("Crouch", false);
             animator.SetBool("Shotgun_Crouch", false);
@@ -591,7 +584,10 @@ public class Movment : MonoBehaviour
             {
 
                 slidingcollider.enabled = false;
-                idlecollider.enabled = true;
+                if (arm.bulletproofVestIsOn == false)
+                {
+                    idlecollider.enabled = true;
+                } 
                 animator.SetBool("canslide", false);
                 animator.SetBool("Shotgun_Slide", false);
                 animator.SetBool("Handgun_Slide", false);

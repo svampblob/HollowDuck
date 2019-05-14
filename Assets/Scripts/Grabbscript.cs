@@ -20,6 +20,7 @@ public class Grabbscript : MonoBehaviour
     public bool holdingShotGun;
     public bool holdingGrenade;
     public bool Shooting;
+    public bool droppweapon;
 
     void Start()
     {
@@ -78,48 +79,106 @@ public class Grabbscript : MonoBehaviour
 
     void Update()
     {
-        if(grabbed == true)
+        if (grabbed == true)
         {
-           if(move.left == true)
-           {
+            if (move.left == true)
+            {
                 equipped.changedirectionleft = true;
                 equipped.changedirectionright = false;
             }
-           if(move.right == true)
+            if (move.right == true)
             {
                 equipped.changedirectionright = true;
                 equipped.changedirectionleft = false;
             }
         }
-        if(Shooting == true)
+        if (Shooting == true)
         {
-            if(grabbed == true)
+            if (grabbed == true)
             {
                 equipped.shooting = true;
             }
         }
-       if(Shooting == false)
-       {
+        if (Shooting == false)
+        {
             if (grabbed == true)
             {
                 equipped.shooting = false;
             }
         }
-        if(grabbed == true)
+        if (grabbed == true)
         {
             grabbablearea.enabled = false;
         }
-        
-        
-        
+
+
+
         if (Input.GetButtonDown(move.ungrabbed + move.Player) && grabbed == true)
         {
             unequiped();
         }
-        
-    }
+        if (droppweapon == true)
+        {
+            print("Droppweapon");
+            move.holdingShotGun = false;
+            move.holdingHandGun = false;
+            move.holdingGrenade = false;
+            holdingShotGun = false;
+            holdingHandGun = false;
+            holdingGrenade = false;
+            countdowntimer = 0f;
+            ungrabbed = true;
+            grabbablearea.enabled = true;
+            grabbed = false;
+            weapon.GetComponent<colliderONOF>().move = true;
+            weapon.GetComponent<colliderONOF>().holdingGun = false;
 
-    private void unequiped()
+            equipped = null;
+            if (ungrabbed == true)
+            {
+                if (move.right == true)
+                {
+                    if (weapon.transform.parent != null)
+                    {
+                        weapon.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.25f) * throwpower;
+                        thrown = true;
+                        weapon.transform.parent = null;
+
+                    }
+                    else
+                    {
+                        droppweapon = false;
+                        thrown = false;
+                    }
+
+                }
+                if (move.right == false)
+                {
+                    throwpower = throwpower * -1;
+                    if (weapon.transform.parent != null)
+                    {
+                        weapon.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.25f) * throwpower;
+                        thrown = true;
+                        weapon.transform.parent = null;
+
+                    }
+                    else
+                    {
+                        droppweapon = false;
+                        thrown = false;
+                    }
+                    droppweapon = false;
+                    grabbed = false;
+                }
+            }
+        }
+      
+    }
+   
+    
+    
+
+    public void unequiped()
     {
         if(Input.GetButtonDown(move.ungrabbed + move.Player))
         {
@@ -176,7 +235,7 @@ public class Grabbscript : MonoBehaviour
         
     }
 
-    private void Grab(Collider2D collision)
+    public void Grab(Collider2D collision)
     {
         
         if (holdingHandGun == true)
@@ -200,18 +259,6 @@ public class Grabbscript : MonoBehaviour
         equipped = collision.GetComponent<GUNS>();
         collision.transform.parent = holdpoint;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Thrown")
-        {
-            ungrabbed = true;
-            throwpower = 2f;
-            weapon.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0.25f) * throwpower;
-        }
-        if(ungrabbed == true)
-        {
-            throwpower = 12.5f;
-        }
-    }
+
 
 }
