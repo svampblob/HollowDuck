@@ -109,7 +109,16 @@ public class Kills : MonoBehaviour
         }
         if (NmbrOfPlayers <= 1)
         {
-            Invoke("VictorySequence", 2);
+            Invoke("VictorySequence", 3);
+            PlayerPrefs.SetInt("Player1", kills1.score);
+            PlayerPrefs.SetInt("Player2", kills2.score);
+            PlayerPrefs.SetInt("Player3", kills3.score);
+            PlayerPrefs.SetInt("Player4", kills4.score);
+
+        }
+        if (NmbrOfPlayers <= 0)
+        {
+            Invoke("VictorySequence", 3);
             PlayerPrefs.SetInt("Player1", kills1.score);
             PlayerPrefs.SetInt("Player2", kills2.score);
             PlayerPrefs.SetInt("Player3", kills3.score);
