@@ -21,7 +21,7 @@ public class colliderONOF : MonoBehaviour {
     public bool Player4;
     public bool touchedplayer;
     public float countdowntimer = 0f;
-    public float maxscountdowntime = 2f;
+    private float maxscountdowntime = 1f;
 
     void Start()
     {
@@ -52,16 +52,10 @@ public class colliderONOF : MonoBehaviour {
         }
         if (holdingGun == false)
         {
+            
             sp.enabled = true;
         }
-       if(touchedplayer == true)
-        {
-            thrown = false;
-            Player1 = false;
-            Player2 = false;
-            Player3 = false;
-            Player4 = false;
-        }
+    
        if(thrown == true)
         {
             countdowntimer += Time.deltaTime;
@@ -117,22 +111,22 @@ public class colliderONOF : MonoBehaviour {
             if (collision.tag == "Player1")
             {
                 Player1 = GameObject.FindGameObjectWithTag("GrabbHitbox1").GetComponent<Grabbscript>().droppweapon = true;
-           
+                move = false;
             }
             if (collision.tag == "Player2")
             {
                 Player2 = GameObject.FindGameObjectWithTag("GrabbHitbox2").GetComponent<Grabbscript>().droppweapon = true;
-              
+                move = false;
             }
             if (collision.tag == "Player3")
             {
                 Player3 = GameObject.FindGameObjectWithTag("GrabbHitbox3").GetComponent<Grabbscript>().droppweapon = true;
-             
+                move = false;
             }
             if (collision.tag == "Player4")
             {
                 Player4 = GameObject.FindGameObjectWithTag("GrabbHitbox4").GetComponent<Grabbscript>().droppweapon = true;
-               
+                move = false;
             }
         }
    

@@ -71,6 +71,9 @@ public class Bullet1 : MonoBehaviour
             armor = GameObject.FindGameObjectWithTag("Armor").GetComponent<Armor>().bulletproofVestIsOn = false;
             destroyItem = true;
        }
-     
+       if(hitInfo.tag == "Props")
+       {
+            destroyItem = true;
+        }
     }
 }

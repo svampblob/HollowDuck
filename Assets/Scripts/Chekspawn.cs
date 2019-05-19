@@ -8,7 +8,7 @@ public class Chekspawn : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.tag == "grabbable")
+        if (collision.gameObject.tag == "grabbable")
         {
             Ran.spawned = true;
         }

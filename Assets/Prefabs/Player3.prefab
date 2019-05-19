@@ -218,6 +218,7 @@ MonoBehaviour:
   holdingHandGun: 0
   holdingShotGun: 0
   holdingGrenade: 0
+  holdingRPG: 0
   Player: 3
   movespeed: 6
   weapondirection: 0
@@ -538,7 +539,6 @@ MonoBehaviour:
   exp: {fileID: 2536818297645305176}
   sheildbarke: {fileID: 8899670122485517814}
   cam: {fileID: 0}
-  gunScript: {fileID: 0}
   armor: {fileID: 983855056040127886}
   playercollider: {fileID: 7986313344592423361}
   die: 0
@@ -668,9 +668,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5d38380510750a4692c9f692335cfec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playedMatches: 0
   Player1: {fileID: 1581953711, guid: 2a061355b9befe846a8b610276fdaf13, type: 3}
   Player2: {fileID: 7183537494733936821, guid: 99e749503c46c514da648b6400498e4d, type: 3}
-  Player3: {fileID: 4123741311297171678, guid: 83e8c9ef6cc8ef743ac7c3ec7e182329, type: 3}
+  Player3: {fileID: 0}
   Player4: {fileID: 6886890244449010484, guid: 0f89c1dfdd2a7394ba8a07fd392c9e12, type: 3}
   NmbrOfPlayers: 0
   score: 0
@@ -1050,6 +1051,7 @@ MonoBehaviour:
   holdingHandGun: 0
   holdingShotGun: 0
   holdingGrenade: 0
+  holdingRPG: 0
   Shooting: 0
   droppweapon: 0
 --- !u!1001 &5396839407340180443

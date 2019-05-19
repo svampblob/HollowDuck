@@ -9,6 +9,7 @@ public class Movment : MonoBehaviour
     public bool holdingHandGun;
     public bool holdingShotGun;
     public bool holdingGrenade;
+    public bool holdingRPG;
     public int Player;
     // Vareabel till Movefunction
     public float movespeed = 6f;
@@ -149,6 +150,33 @@ public class Movment : MonoBehaviour
                 }
 
             }
+            if(holdingRPG == true)
+            {
+                animator.SetBool("Shotgun_Run", false);
+                animator.SetBool("Gun_Run", false);
+                animator.SetBool("Running", false);
+                animator.SetBool("Idle", false);
+                animator.SetBool("Idle_Handgun", false);
+                animator.SetBool("Shotgun_Idle", false);
+                animator.SetBool("Grenade_Run", false);
+                animator.SetBool("Grenade_Idle", false);
+                animator.SetBool("RPG_RUn", true);
+                animator.SetBool("RPG_Idle", false);
+            }
+            else
+            {
+                if(holdingGrenade == false && holdingHandGun == false && holdingShotGun == false && holdingRPG == false)
+                {
+                    animator.SetBool("Running", true);
+                    animator.SetBool("Gun_Run", false);
+                    animator.SetBool("Idle", false);
+                    animator.SetBool("Shotgun_Run", false);
+                    animator.SetBool("Shotgun_Idle", false);
+                    animator.SetBool("Grenade_Run", false);
+                    animator.SetBool("Grenade_Idle", false);
+                    animator.SetBool("RPG_RUn", false);
+                }
+            }
         }// Vänster
         if (Input.GetAxisRaw(movekey + Player) > 0)
         {
@@ -225,6 +253,33 @@ public class Movment : MonoBehaviour
                 }
 
             }
+            if(holdingRPG == true)
+            {
+                animator.SetBool("Shotgun_Run", false);
+                animator.SetBool("Gun_Run", false);
+                animator.SetBool("Running", false);
+                animator.SetBool("Idle", false);
+                animator.SetBool("Idle_Handgun", false);
+                animator.SetBool("Shotgun_Idle", false);
+                animator.SetBool("Grenade_Run", false);
+                animator.SetBool("Grenade_Idle", false);
+                animator.SetBool("RPG_RUn", true);
+                animator.SetBool("RPG_Idle", false);
+            }
+            else
+            {
+                if (holdingHandGun == false && holdingGrenade == false && holdingShotGun == false)
+                {
+                    animator.SetBool("Running", true);
+                    animator.SetBool("Gun_Run", false);
+                    animator.SetBool("Idle", false);
+                    animator.SetBool("Shotgun_Run", false);
+                    animator.SetBool("Shotgun_Idle", false);
+                    animator.SetBool("Grenade_Run", false);
+                    animator.SetBool("Grenade_Idle", false);
+                    animator.SetBool("RPG_RUn", false);
+                }
+            }
         }// Höger
         if (Input.GetAxisRaw(movekey + Player) == 0)
         {
@@ -237,7 +292,7 @@ public class Movment : MonoBehaviour
                 animator.SetBool("Idle", false);
                 animator.SetBool("Idle_Handgun", true);
             }
-            if (holdingHandGun == false)
+            if (holdingShotGun == false && holdingHandGun == false && holdingRPG == false && holdingGrenade == false)
             {
                 animator.SetBool("Idle_Handgun", false);
                 animator.SetBool("Running", false);
@@ -255,7 +310,7 @@ public class Movment : MonoBehaviour
                 animator.SetBool("Idle_Handgun", false);
 
             }
-            if (holdingShotGun == false)
+            if (holdingShotGun == false && holdingHandGun == false && holdingRPG == false && holdingGrenade == false)
             {
 
                 animator.SetBool("Running", false);
@@ -276,7 +331,7 @@ public class Movment : MonoBehaviour
                 animator.SetBool("Grenade_Run", false);
                 animator.SetBool("Grenade_Idle", true);
             }
-           if(holdingGrenade == false && holdingHandGun == false && holdingShotGun == false)
+           if(holdingShotGun == false && holdingHandGun == false && holdingRPG == false && holdingGrenade == false)
             {
                 animator.SetBool("Running", false);
                 animator.SetBool("Gun_Run", false);
@@ -286,8 +341,35 @@ public class Movment : MonoBehaviour
                 animator.SetBool("Shotgun_Idle", false);
                 animator.SetBool("Grenade_Idle", false);
             }
-           
-        }
+            if (holdingRPG == true)
+            {
+                animator.SetBool("RPG_Idle", true);
+                animator.SetBool("RPG_RUn", false);
+                animator.SetBool("Shotgun_Idle", false);
+                animator.SetBool("Gun_Run", false);
+                animator.SetBool("Running", false);
+                animator.SetBool("Shotgun_Run", false);
+                animator.SetBool("Idle", false);
+                animator.SetBool("Idle_Handgun", false);
+                animator.SetBool("Grenade_Run", false);
+                animator.SetBool("Grenade_Idle", false);
+            }
+            else
+            {
+                if (holdingHandGun == false && holdingGrenade == false && holdingShotGun == false && holdingRPG == false)
+                {
+                    animator.SetBool("RPG_Idle", false);
+                    animator.SetBool("Shotgun_Idle", false);
+                    animator.SetBool("Gun_Run", false);
+                    animator.SetBool("Running", false);
+                    animator.SetBool("Shotgun_Run", false);
+                    animator.SetBool("Idle", true);
+                    animator.SetBool("Idle_Handgun", false);
+                    animator.SetBool("Grenade_Run", false);
+                    animator.SetBool("Grenade_Idle", false);
+                }
+            }
+        }// Notmoving
 
         if (Input.GetAxisRaw(movekey + Player) < 0 && Input.GetButtonDown(crouchkey + Player))
         {
@@ -372,13 +454,32 @@ public class Movment : MonoBehaviour
                 animator.SetBool("Grenade_Idle", false);
                 animator.SetBool("Grenade_Run", false);
             }
+            if (holdingRPG == true)
+            {
+                animator.SetBool("Gun_Jump", false);
+                animator.SetBool("Running", false);
+                animator.SetBool("Jump", false);
+                animator.SetBool("Gun_Run", false);
+                animator.SetBool("Idle_Handgun", false);
+                animator.SetBool("canslide", false);
+                animator.SetBool("Shotgun_Jump", false);
+                animator.SetBool("Shotgun_Idle", false);
+                animator.SetBool("Grenade_Jump", false);
+                animator.SetBool("Grenade_Idle", false);
+                animator.SetBool("Grenade_Run", false);
+                animator.SetBool("RPG_Jump", true);
+                animator.SetBool("RPG_Idle", false);
+                animator.SetBool("RPG_RUn", false);
+            }
         }
+        
         if (groundcheck.isgrounded == 1)
         {
             animator.SetBool("Gun_Jump", false);
             animator.SetBool("Jump", false);
             animator.SetBool("Shotgun_Jump", false);
             animator.SetBool("Grenade_Jump", false);
+            animator.SetBool("RPG_Jump", false);
         }
     }
     void Crouchfunction()
@@ -452,7 +553,25 @@ public class Movment : MonoBehaviour
                     animator.SetBool("Idle_Handgun", false);
                 }
             }
+            if (holdingRPG == true)
+            {
+                animator.SetBool("Crouch", false);
+                animator.SetBool("RPG_Idle", false);
+                animator.SetBool("RPG_Crouch", true);
+            }
+            if (holdingRPG == false)
+            {
+                if (holdingShotGun == false && holdingHandGun == false && holdingGrenade == false)
+                {
+                    animator.SetBool("Handgun_Crouch", false);
+                    animator.SetBool("Crouch", true);
+                    animator.SetBool("Idle_Handgun", false);
+                    animator.SetBool("Handgun_Crouch", false);
+                    animator.SetBool("Idle_Handgun", false);
+                }
+            }
         }
+       
         if (Crouch == false)
         {
             movespeed = 6f;
@@ -460,6 +579,7 @@ public class Movment : MonoBehaviour
             animator.SetBool("Shotgun_Crouch", false);
             animator.SetBool("Handgun_Crouch", false);
             animator.SetBool("Grenade_Crouch", false);
+            animator.SetBool("RPG_Crouch", false);
         }
 
     }
@@ -511,7 +631,7 @@ public class Movment : MonoBehaviour
                 }
                 else
                 {
-                    if (holdingShotGun == false )
+                    if (holdingShotGun == false)
                     {
                         animator.SetBool("Idle_Handgun", false);
                         animator.SetBool("canslide", true);
@@ -574,7 +694,41 @@ public class Movment : MonoBehaviour
                         animator.SetBool("Shotgun_Slide", false);
                     } 
                 }
+                if(holdingRPG == true)
+                {
+                    animator.SetBool("Idle_Handgun", false);
+                    animator.SetBool("canslide", false);
+                    animator.SetBool("Running", false);
+                    animator.SetBool("Gun_Run", false);
+                    animator.SetBool("Shotgun_Slide", false);
+                    animator.SetBool("Shotgun_Run", false);
+                    animator.SetBool("Handgun_Slide", false);
+                    animator.SetBool("Grenade_Slide", false);
+                    animator.SetBool("Grenade_Idle", false);
+                    animator.SetBool("Grenade_Run", false);
+                    animator.SetBool("Grenade_Crouch", false);
+                    animator.SetBool("RPG_Slide", true);
+                    animator.SetBool("RPG_RUn", false);
+                    animator.SetBool("RPG_Crouch", false);
 
+                }
+                else
+                {
+                    if(holdingGrenade == false && holdingHandGun == false && holdingShotGun == false)
+                    {
+                        animator.SetBool("Idle_Handgun", false);
+                        animator.SetBool("canslide", true);
+                        animator.SetBool("Running", false);
+                        animator.SetBool("Gun_Run", false);
+                        animator.SetBool("Shotgun_Slide", false);
+                        animator.SetBool("Idle_Handgun", false);
+                        animator.SetBool("Running", false);
+                        animator.SetBool("Gun_Run", false);
+                        animator.SetBool("Shotgun_Slide", false);
+                        animator.SetBool("RPG_Slide", false);
+                    }
+                }
+                    
             }
 
         }
@@ -593,6 +747,7 @@ public class Movment : MonoBehaviour
                 animator.SetBool("Handgun_Slide", false);
                 animator.SetBool("Idle", false);
                 animator.SetBool("Grenade_Slide", false);
+                animator.SetBool("RPG_Slide", false);
             }
         }
 
@@ -612,6 +767,10 @@ public class Movment : MonoBehaviour
             {
                 grab.Shooting = true;
             }
+            if(holdingRPG == true)
+            {
+                grab.Shooting = true;
+            }
         }
         if (Input.GetButtonUp(ShootingKey + Player))
         {
@@ -620,6 +779,10 @@ public class Movment : MonoBehaviour
                 grab.Shooting = false;
             }
             if (holdingShotGun == true)
+            {
+                grab.Shooting = false;
+            }
+            if(holdingRPG == true)
             {
                 grab.Shooting = false;
             }

@@ -19,6 +19,7 @@ public class Grabbscript : MonoBehaviour
     public bool holdingHandGun;
     public bool holdingShotGun;
     public bool holdingGrenade;
+    public bool holdingRPG;
     public bool Shooting;
     public bool droppweapon;
 
@@ -45,6 +46,11 @@ public class Grabbscript : MonoBehaviour
         {
             print("Grenade");
             holdingGrenade = true;
+        }
+        if(collision.tag == "RPG")
+        {
+            print("RPG");
+            holdingRPG = true;
         }
         if (collision.tag == "grabbable")
         {   
@@ -75,6 +81,7 @@ public class Grabbscript : MonoBehaviour
         holdingShotGun = false;
         holdingHandGun = false;
         holdingGrenade = false;
+        holdingRPG = false;
     }
 
     void Update()
@@ -123,6 +130,8 @@ public class Grabbscript : MonoBehaviour
             move.holdingShotGun = false;
             move.holdingHandGun = false;
             move.holdingGrenade = false;
+            move.holdingRPG = false;
+            holdingRPG = false;
             holdingShotGun = false;
             holdingHandGun = false;
             holdingGrenade = false;
@@ -185,6 +194,8 @@ public class Grabbscript : MonoBehaviour
             move.holdingShotGun = false;
             move.holdingHandGun = false;
             move.holdingGrenade = false;
+            move.holdingRPG = false;
+            holdingRPG = false;
             holdingShotGun = false;
             holdingHandGun = false;
             holdingGrenade = false;
@@ -249,6 +260,10 @@ public class Grabbscript : MonoBehaviour
        if(holdingGrenade == true)
         {
             move.holdingGrenade = true;
+        }
+       if(holdingRPG == true)
+        {
+            move.holdingRPG = true;
         }
         ungrabbed = false;
         grabbed = true;

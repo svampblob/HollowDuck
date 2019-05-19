@@ -23,6 +23,8 @@ TagManager:
   - GrabbHitbox2
   - GrabbHitbox3
   - GrabbHitbox4
+  - Props
+  - RPG
   layers:
   - Default
   - TransparentFX
