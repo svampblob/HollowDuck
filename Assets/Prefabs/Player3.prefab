@@ -225,7 +225,7 @@ MonoBehaviour:
   moving: 0
   right: 0
   left: 0
-  Jumpspeed: 15
+  Jumpspeed: 16
   IsJumping: 0
   disablecollider2D: {fileID: 7902597991132662856}
   slidingcollider: {fileID: 7528659880310405840}
@@ -669,10 +669,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playedMatches: 0
-  Player1: {fileID: 1581953711, guid: 2a061355b9befe846a8b610276fdaf13, type: 3}
-  Player2: {fileID: 7183537494733936821, guid: 99e749503c46c514da648b6400498e4d, type: 3}
-  Player3: {fileID: 0}
-  Player4: {fileID: 6886890244449010484, guid: 0f89c1dfdd2a7394ba8a07fd392c9e12, type: 3}
+  Player1: {fileID: 0}
+  Player2: {fileID: 0}
+  Player3: {fileID: 4123741311297171678}
+  Player4: {fileID: 0}
   NmbrOfPlayers: 0
   score: 0
   text1: {fileID: 0}

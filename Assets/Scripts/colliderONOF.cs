@@ -22,6 +22,8 @@ public class colliderONOF : MonoBehaviour {
     public bool touchedplayer;
     public float countdowntimer = 0f;
     private float maxscountdowntime = 1f;
+    public float countdowntimer1 = 0f;
+    private float maxscountdowntime1 = 0.25f;
 
     void Start()
     {
@@ -38,15 +40,9 @@ public class colliderONOF : MonoBehaviour {
             dissablecollider2d.enabled = true;
             rbody2.bodyType = RigidbodyType2D.Dynamic;
         }
-        if(move == false)
-        {
-            
-            dissablecollider2d.enabled = false;
-            rbody2.bodyType = RigidbodyType2D.Kinematic;
-        }
         if(holdingGun == true)
         {
-          
+            rbody2.bodyType = RigidbodyType2D.Kinematic;
             gunarea.enabled = true;
             sp.enabled = false;
         }
@@ -55,7 +51,6 @@ public class colliderONOF : MonoBehaviour {
             
             sp.enabled = true;
         }
-    
        if(thrown == true)
         {
             countdowntimer += Time.deltaTime;
@@ -71,6 +66,15 @@ public class colliderONOF : MonoBehaviour {
                 Player2 = false;
                 Player3 = false;
                 Player4 = false;
+            }
+        }
+       if(touchedplayer == true)
+        {
+            print("touchedplayer");
+            countdowntimer1 += Time.deltaTime;
+            if(countdowntimer1 > maxscountdowntime1)
+            {
+                move = false;
             }
         }
     }
@@ -111,22 +115,22 @@ public class colliderONOF : MonoBehaviour {
             if (collision.tag == "Player1")
             {
                 Player1 = GameObject.FindGameObjectWithTag("GrabbHitbox1").GetComponent<Grabbscript>().droppweapon = true;
-                move = false;
+                touchedplayer = true;
             }
             if (collision.tag == "Player2")
             {
                 Player2 = GameObject.FindGameObjectWithTag("GrabbHitbox2").GetComponent<Grabbscript>().droppweapon = true;
-                move = false;
+                touchedplayer = true;
             }
             if (collision.tag == "Player3")
             {
                 Player3 = GameObject.FindGameObjectWithTag("GrabbHitbox3").GetComponent<Grabbscript>().droppweapon = true;
-                move = false;
+                touchedplayer = true;
             }
             if (collision.tag == "Player4")
             {
                 Player4 = GameObject.FindGameObjectWithTag("GrabbHitbox4").GetComponent<Grabbscript>().droppweapon = true;
-                move = false;
+                touchedplayer = true;
             }
         }
    

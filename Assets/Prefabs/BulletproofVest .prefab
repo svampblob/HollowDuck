@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 687426855888459682}
   - component: {fileID: 5153269911661421940}
-  - component: {fileID: 3225538837362708166}
+  - component: {fileID: 7254147695259941831}
+  - component: {fileID: 4433711913758673144}
   m_Layer: 0
-  m_Name: BulletproofVest 1
+  m_Name: 'BulletproofVest '
   m_TagString: BulletproofVest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +81,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &3225538837362708166
+--- !u!114 &7254147695259941831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4763392328639263854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4abd905d33d1c0c4aae843b4ef668003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyed: 0
+--- !u!60 &4433711913758673144
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,10 +119,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.0030984879, y: 0.11048889}
-      - {x: -0.35364056, y: -0.068855606}
-      - {x: -0.17101765, y: -0.19027393}
-      - {x: -0.050652187, y: -0.47429276}
-      - {x: 0.03135109, y: -0.49065208}
-      - {x: 0.17996185, y: -0.18835482}
-      - {x: 0.36766276, y: -0.061144195}
+    - - {x: -0.12, y: 0.13}
+      - {x: -0.34, y: 0.049999997}
+      - {x: -0.37, y: -0.02}
+      - {x: -0.37, y: -0.16}
+      - {x: -0.14999999, y: -0.37}
+      - {x: -0.06, y: -0.5}
+      - {x: 0.049999997, y: -0.5}
+      - {x: 0.099999994, y: -0.48}
+      - {x: 0.37, y: -0.12}
+      - {x: 0.37, y: 0.03}
+      - {x: 0.049999997, y: 0.13}

@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 688945470060222977}
   - component: {fileID: 5798309333807005257}
-  - component: {fileID: 4583770296209857260}
   - component: {fileID: 60155981495436910}
   - component: {fileID: 4464512628051827708}
+  - component: {fileID: 3637861660002826853}
+  - component: {fileID: 494731049549058755}
   m_Layer: 0
-  m_Name: RPG_Bullet
+  m_Name: RPG_Bullet 1
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,27 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4583770296209857260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7246574370481356447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb71923d786250047bb982ffeb3a4778, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 20
-  Rb: {fileID: 60155981495436910}
-  TimeToDestroy: 0.8
-  destroyItem: 0
-  armor: 0
-  Player1: 0
-  Player2: 0
-  Player3: 0
-  Player4: 0
 --- !u!50 &60155981495436910
 Rigidbody2D:
   serializedVersion: 4
@@ -157,3 +137,40 @@ PolygonCollider2D:
       - {x: 0.19999999, y: -0.17}
       - {x: 0.19999999, y: 0.04}
       - {x: 0.16, y: 0.049999997}
+--- !u!58 &3637861660002826853
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7246574370481356447}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.07096815}
+  serializedVersion: 2
+  m_Radius: 0.06642473
+--- !u!114 &494731049549058755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7246574370481356447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb71923d786250047bb982ffeb3a4778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  Rb: {fileID: 60155981495436910}
+  TimeToDestroy: 0.8
+  destroyItem: 0
+  armor: 0
+  Player1: 0
+  Player2: 0
+  Player3: 0
+  Player4: 0

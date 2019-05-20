@@ -25,6 +25,7 @@ TagManager:
   - GrabbHitbox4
   - Props
   - RPG
+  - GrabableArmor
   layers:
   - Default
   - TransparentFX

@@ -25,7 +25,7 @@ public class Armor : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.gameObject.name.Equals ("BulletproofVest")) {
+		if (col.gameObject.tag.Equals("BulletproofVest")) {
 			bulletproofVest.SetActive (true);
 			bulletproofVestIsOn = true;
 			healthPoints = 5;

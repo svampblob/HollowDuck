@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5823668155202335632}
   - component: {fileID: 6597535246708521229}
   - component: {fileID: 6573858556175874818}
+  - component: {fileID: 1655980321229487795}
   m_Layer: 0
   m_Name: Checkpoint
   m_TagString: Untagged
@@ -58,9 +59,35 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.11078578}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.5597668
+--- !u!61 &1655980321229487795
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8715704216815770204}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.033637047}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.28689432}
+  m_EdgeRadius: 0
 --- !u!1 &8942641438932715019
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,9 +185,12 @@ MonoBehaviour:
   Prefab1: {fileID: 6812975409093321847, guid: af3be1f247b21984e93dbf96f3230378, type: 3}
   Prefab2: {fileID: 8178460469068463176, guid: b401a912eb84eac44b78b89f4d5c314c, type: 3}
   Prefab3: {fileID: 1838774059897143486, guid: aebc1cf0b635594458a6276802f53fad, type: 3}
-  Prefab4: {fileID: 4763392328639263854, guid: 3a2685b9f272ac643b0ab8e85ba5ad39, type: 3}
+  Prefab4: {fileID: 7661050493569703547, guid: 7b7b97bbf830a774c83e39e7bbbf9cc6, type: 3}
   spawned: 0
   SpawnRate: 8
+  dontstartspawn: 0
+  countdowntimer: 0
+  maxscountdowntime: 1.5
 --- !u!60 &8942641438932715023
 PolygonCollider2D:
   m_ObjectHideFlags: 0

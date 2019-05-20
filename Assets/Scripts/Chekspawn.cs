@@ -8,13 +8,13 @@ public class Chekspawn : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "grabbable")
+        if(collision.tag == "grabbable")
         {
             Ran.spawned = true;
         }
-        else
-        {
-            Ran.spawned = false;
-        }
+    }
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        Ran.spawned = false; 
     }
 }
