@@ -19,6 +19,7 @@ public class Kills : MonoBehaviour
     private Kills kills3;
     private Kills kills4;
     public int NmbrOfPlayers;
+    public GameObject scoreScreen;
 
 
     public int score;
@@ -73,15 +74,43 @@ public class Kills : MonoBehaviour
         kills3.score = PlayerPrefs.GetInt("Player3");
         kills4.score = PlayerPrefs.GetInt("Player4");
         anim = GetComponent<Animator>();
+         scoreScreen.SetActive(false);
+
+        scoreScreen.transform.SetAsFirstSibling();
+        text1.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(-950f, 400f);
+        text1.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(-750f, 500f);
+        text2.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(-350f, 400f);
+        text2.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(-175f, 500f);
+        text3.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(175f, 400f);
+        text3.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(350f, 500f);
+        text4.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(750, 400f);
+        text4.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(950, 500f);
+
 
     }
     // Update is called once per frame
     void Update()
     {
-        text1.text = "Player 1 kills " + kills1.score;
-        text2.text = "Player 2 kills " + kills2.score;
-        text3.text = "Player 3 kills " + kills3.score;
-        text4.text = "Player 4 kills " + kills4.score;
+        if (Player1 != null && playedMatches <= 3)
+        {
+            text1.text = "P1 kills " + kills1.score;
+
+        }
+        if (Player2 != null && playedMatches <= 3)
+        {
+            text2.text = "P2 kills " + kills2.score;
+        }
+        if (Player3 != null && playedMatches <= 3)
+        {
+
+            text3.text = "P3 kills " + kills3.score;
+
+        }
+        if (Player4 != null && playedMatches <= 3)
+        {
+            text4.text = "p4 kills " + kills4.score;
+
+        }
 
         if (Player1 == null && player1Null == false)
         {
@@ -127,9 +156,23 @@ public class Kills : MonoBehaviour
         }
         if (playedMatches == 3)
         {
+            text1.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(-450f, -110f);
+            text1.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(-5f, -20f);
+            text2.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(-275f, -110f);
+            text2.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(-5f, -20f);
+            text3.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(-5f, -110f);
+            text3.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(150f, -20f);
+            text4.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(235, -110f);
+            text4.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(500, -20f);
             Time.timeScale = 0f;
+            scoreScreen.SetActive(true);
+            text1.text = "" + kills1.score;
+            text2.text = "" + kills1.score;
+            text3.text = "" + kills1.score;
+            text4.text = "" + kills1.score;
 
-            Invoke("VictorySequence", 10);
+
+            Invoke("VictorySequence2", 10);
 
         }
 
@@ -140,6 +183,16 @@ public class Kills : MonoBehaviour
         SceneManager.LoadScene(Random.Range(5, 7));
         playedMatches++;
         Time.timeScale = 1f;
+        scoreScreen.SetActive(false);
+    }
+    public void VictorySequence2()
+    {
+        SceneManager.LoadScene(Random.Range(5, 7));
+        Time.timeScale = 1f;
+        scoreScreen.SetActive(false);
+        playedMatches = 0;
+        //text1.transform
+
     }
     void AddToScore()
     {
