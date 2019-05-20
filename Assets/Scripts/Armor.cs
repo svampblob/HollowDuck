@@ -14,8 +14,8 @@ public class Armor : MonoBehaviour
     [SerializeField]
     GameObject bulletproofVest = null;
 
-    //[SerializeField]
-    //Image healthpoints = null, armor = null;
+    [SerializeField]
+    Image healthpoints = null, armor = null;
 
     bool bulletproofVestIsOn = false;
 
@@ -26,7 +26,7 @@ public class Armor : MonoBehaviour
         armorcol.enabled = false;
         bulletproofVest.SetActive(false);
         rb = GetComponent<Rigidbody2D>();
-       // armor.fillAmount = 0f;
+        armor.fillAmount = 0f;
     }
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -34,14 +34,14 @@ public class Armor : MonoBehaviour
         {
             bulletproofVest.SetActive(true);
             bulletproofVestIsOn = true;
-           // healthpoints.fillAmount = 1f;
-           // armor.fillAmount = 1f;
+           healthpoints.fillAmount = 1f;
+           armor.fillAmount = 1f;
 
-           // healthPoints = 1;
+           healthPoints = 1;
             armorPoints = 1;
             armorcol.enabled = true;
-            //healthPoints = 1;
-            //armorPoints = 1;
+            healthPoints = 1;
+            armorPoints = 1;
 
             Destroy(col.gameObject);
         }

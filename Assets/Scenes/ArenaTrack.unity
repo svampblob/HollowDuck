@@ -1047,6 +1047,11 @@ PrefabInstance:
       propertyPath: targets.Array.data[3]
       value: 
       objectReference: {fileID: 1628343254}
+    - target: {fileID: 1342345738454576236, guid: d92567684317f8e4f9c390c9c7725a85,
+        type: 3}
+      propertyPath: maxZoom
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1342345738454576239, guid: d92567684317f8e4f9c390c9c7725a85,
         type: 3}
       propertyPath: m_LocalPosition.x
