@@ -74,7 +74,7 @@ public class Kills : MonoBehaviour
         kills3.score = PlayerPrefs.GetInt("Player3");
         kills4.score = PlayerPrefs.GetInt("Player4");
         anim = GetComponent<Animator>();
-        //    scoreScreen.SetActive(false);
+           scoreScreen.SetActive(false);
 
         scoreScreen.transform.SetAsFirstSibling();
         text1.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(-950f, 400f);
