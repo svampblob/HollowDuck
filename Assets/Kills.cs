@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class Kills : MonoBehaviour
 {
-    private Animator anim;
 
     public int playedMatches;
 
@@ -73,8 +72,7 @@ public class Kills : MonoBehaviour
         kills2.score = PlayerPrefs.GetInt("Player2");
         kills3.score = PlayerPrefs.GetInt("Player3");
         kills4.score = PlayerPrefs.GetInt("Player4");
-        anim = GetComponent<Animator>();
-           scoreScreen.SetActive(false);
+        scoreScreen.SetActive(false);
 
         scoreScreen.transform.SetAsFirstSibling();
         text1.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(-950f, 400f);
@@ -173,6 +171,7 @@ public class Kills : MonoBehaviour
             Invoke("VictorySequence2", 10);
         }
     }
+    //efter varje match
     public void VictorySequence()
     {
         SceneManager.LoadScene(Random.Range(5, 7));
@@ -180,18 +179,23 @@ public class Kills : MonoBehaviour
         Time.timeScale = 1f;
         scoreScreen.SetActive(false);
     }
+    //sequence efter 3 matcher
     public void VictorySequence2()
     {
         SceneManager.LoadScene(Random.Range(5, 7));
         Time.timeScale = 1f;
         scoreScreen.SetActive(false);
         playedMatches = 0;
+        //text1
         text1.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(-950f, 400f);
         text1.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(-750f, 500f);
+        //text2
         text2.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(-350f, 400f);
         text2.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(-175f, 500f);
+        //text3
         text3.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(175f, 400f);
         text3.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(350f, 500f);
+        //text4
         text4.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(750, 400f);
         text4.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(950, 500f);
     }
