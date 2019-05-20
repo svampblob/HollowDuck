@@ -21,6 +21,7 @@ public class Kills : MonoBehaviour
     public GameObject scoreScreen;
 
 
+
     public int score;
     public TextMeshProUGUI text1;
     public TextMeshProUGUI text2;
@@ -44,6 +45,7 @@ public class Kills : MonoBehaviour
     }
     private void Start()
     {
+        playedMatches = PlayerPrefs.GetInt("MatchesPlayed");
         if (Player1 != null)
         {
             NmbrOfPlayers++;
@@ -136,47 +138,75 @@ public class Kills : MonoBehaviour
         }
         if (NmbrOfPlayers <= 1)
         {
-            Invoke("VictorySequence", 3);
             PlayerPrefs.SetInt("Player1", kills1.score);
             PlayerPrefs.SetInt("Player2", kills2.score);
             PlayerPrefs.SetInt("Player3", kills3.score);
             PlayerPrefs.SetInt("Player4", kills4.score);
+            if (playedMatches <= 3)
+            {
+            Invoke("VictorySequence", 3);
+
+            }
+            else
+            {
+                text1.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(-450f, -110f);
+                text1.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(-5f, -20f);
+                text2.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(-265f, -110f);
+                text2.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(-5f, -20f);
+                text3.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(0f, -110f);
+                text3.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(150f, -20f);
+                text4.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(235, -110f);
+                text4.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(500, -20f);
+                Time.timeScale = 0f;
+                scoreScreen.SetActive(true);
+                text1.text = "" + kills1.score;
+                text2.text = "" + kills1.score;
+                text3.text = "" + kills1.score;
+                text4.text = "" + kills1.score;
+                Invoke("VictorySequence2", 10);
+            }
 
         }
         if (NmbrOfPlayers <= 0)
         {
-            Invoke("VictorySequence", 3);
             PlayerPrefs.SetInt("Player1", kills1.score);
             PlayerPrefs.SetInt("Player2", kills2.score);
             PlayerPrefs.SetInt("Player3", kills3.score);
             PlayerPrefs.SetInt("Player4", kills4.score);
+            if (playedMatches <= 3)
+            {
+                Invoke("VictorySequence", 3);
+
+            }
+            else
+            {
+                text1.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(-450f, -110f);
+                text1.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(-5f, -20f);
+                text2.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(-265f, -110f);
+                text2.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(-5f, -20f);
+                text3.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(0f, -110f);
+                text3.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(150f, -20f);
+                text4.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(235, -110f);
+                text4.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(500, -20f);
+                Time.timeScale = 0f;
+                scoreScreen.SetActive(true);
+                text1.text = "" + kills1.score;
+                text2.text = "" + kills1.score;
+                text3.text = "" + kills1.score;
+                text4.text = "" + kills1.score;
+                Invoke("VictorySequence2", 10);
+            }
 
         }
-        if (playedMatches == 3)
-        {
-            text1.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(-450f, -110f);
-            text1.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(-5f, -20f);
-            text2.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(-265f, -110f);
-            text2.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(-5f, -20f);
-            text3.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(0f, -110f);
-            text3.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(150f, -20f);
-            text4.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(235, -110f);
-            text4.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(500, -20f);
-            Time.timeScale = 0f;
-            scoreScreen.SetActive(true);
-            text1.text = "" + kills1.score;
-            text2.text = "" + kills1.score;
-            text3.text = "" + kills1.score;
-            text4.text = "" + kills1.score;
-            Invoke("VictorySequence2", 10);
-        }
+    
     }
     //efter varje match
     public void VictorySequence()
     {
-        SceneManager.LoadScene(Random.Range(5, 7));
         playedMatches++;
-        Time.timeScale = 1f;
+        SceneManager.LoadScene(Random.Range(5, 7));
+        PlayerPrefs.SetInt("MatchesPlayed", playedMatches);
+            Time.timeScale = 1f;
         scoreScreen.SetActive(false);
     }
     //sequence efter 3 matcher
@@ -185,8 +215,8 @@ public class Kills : MonoBehaviour
         SceneManager.LoadScene(Random.Range(5, 7));
         Time.timeScale = 1f;
         scoreScreen.SetActive(false);
-        playedMatches = 0;
-        //text1
+        PlayerPrefs.SetInt("MatchesPlayed", 0);
+            //text1
         text1.gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(-950f, 400f);
         text1.gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(-750f, 500f);
         //text2
@@ -201,7 +231,7 @@ public class Kills : MonoBehaviour
     }
     void AddToScore()
     {
-        score = score + 1;
+        score ++;
     }
 
 }

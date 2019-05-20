@@ -15,7 +15,8 @@ public class Player : MonoBehaviour
     public Armor armor;
     public Collider2D playercollider;
     public bool die;
-    
+    private GameObject enemyPlayer;
+    private bool dead;
     void Start()
     {
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MultipleTargetCamera>();
@@ -25,7 +26,6 @@ public class Player : MonoBehaviour
     {
         if (health <= 0)
         {
-           
             Die();
         }
        if(armor.bulletproofVestIsOn == true)
@@ -43,8 +43,11 @@ public class Player : MonoBehaviour
     {
      
         Instantiate(bloodeffect, Weaponholder.position, Weaponholder.rotation);
-        Destroy(playerobject, 0.4f);
+        Destroy(playerobject, 0.1f);
         Camera.main.GetComponent<MultipleTargetCamera>().targets.Remove(transform);
+        Kills kill = enemyPlayer.GetComponent<Kills>();
+        kill.Invoke("AddToScore", 0f);
+        
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -54,14 +57,37 @@ public class Player : MonoBehaviour
             exp.Play();
             cam.shake(0.1f, 0.2f);
         }
-        if(collision.tag == "Bullet")
+        if (collision.tag == "Bullet")
         {
-            if(health <= 0)
+            if (health <= 0)
             {
                 exp.Play();
                 cam.shake(0.1f, 0.2f);
+                if (collision.gameObject.name == "Fire_Bullet 1(Clone)")
+                {
+                    print("Hej");
+                    enemyPlayer = GameObject.FindWithTag("Player1");
+                }
+                if (collision.gameObject.name == "Fire_Bullet 2(Clone)")
+                {
+                    enemyPlayer = GameObject.Find("Player2");
+
+                }
+                if (collision.gameObject.name == "Fire_Bullet 3(Clone)")
+                {
+                    enemyPlayer = GameObject.Find("Player3");
+
+                }
+                if (collision.gameObject.name == "Fire_Bullet 4(Clone)")
+                {
+                    enemyPlayer = GameObject.Find("Player4");
+
+
+                }
+
             }
         }
+        
         if(collision.tag == "Bullet")
         {
             if(armor.bulletproofVestIsOn == false && health > 0)

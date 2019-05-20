@@ -17,6 +17,7 @@ public class Bullet1 : MonoBehaviour
     void Start()
     {
         Rb.velocity = transform.right * speed;
+
     }
     void Update()
     {
@@ -39,6 +40,7 @@ public class Bullet1 : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
+        
         if (hitInfo.gameObject.GetComponent<armorOnPlayer>())
         {
             Destroy(gameObject);
@@ -46,8 +48,10 @@ public class Bullet1 : MonoBehaviour
        if(hitInfo.tag == "Player1")
        {
             Player1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player>().health = 0;
-       }
-       if (hitInfo.tag == "Player2")
+            destroyItem = true;
+
+        }
+        if (hitInfo.tag == "Player2")
         {
             Player2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<Player>().health = 0;
             destroyItem = true;
