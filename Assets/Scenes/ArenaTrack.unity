@@ -812,7 +812,7 @@ PrefabInstance:
         type: 3}
       propertyPath: scoreScreen
       value: 
-      objectReference: {fileID: 849899561}
+      objectReference: {fileID: 1851232346}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a061355b9befe846a8b610276fdaf13, type: 3}
 --- !u!4 &261531881 stripped
@@ -1091,7 +1091,7 @@ PrefabInstance:
         type: 3}
       propertyPath: scoreScreen
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1851232346}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99e749503c46c514da648b6400498e4d, type: 3}
 --- !u!1 &623776552
@@ -1595,80 +1595,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02a6463c32517724eabb34e037d6f09c, type: 3}
---- !u!1 &849899561
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 849899562}
-  - component: {fileID: 849899564}
-  - component: {fileID: 849899563}
-  m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &849899562
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 849899561}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1088655000}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -54, y: 319.15}
-  m_SizeDelta: {x: 1259.1, y: 708.3}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &849899563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 849899561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d4194f35e65ec954fbd2284703cacd80, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
---- !u!222 &849899564
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 849899561}
-  m_CullTransparentMesh: 0
 --- !u!1001 &885291816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2216,6 +2142,21 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5536801462717032552, guid: 2a0c6719a72c8d64494a62ff194da9df,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352291261983641823, guid: 2a0c6719a72c8d64494a62ff194da9df,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2659387325888076648, guid: 2a0c6719a72c8d64494a62ff194da9df,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a0c6719a72c8d64494a62ff194da9df, type: 3}
 --- !u!224 &1088655000 stripped
@@ -2653,7 +2594,7 @@ PrefabInstance:
         type: 3}
       propertyPath: scoreScreen
       value: 
-      objectReference: {fileID: 849899561}
+      objectReference: {fileID: 1851232346}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83e8c9ef6cc8ef743ac7c3ec7e182329, type: 3}
 --- !u!1 &1484300713
@@ -3055,7 +2996,7 @@ PrefabInstance:
         type: 3}
       propertyPath: scoreScreen
       value: 
-      objectReference: {fileID: 849899561}
+      objectReference: {fileID: 1851232346}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f89c1dfdd2a7394ba8a07fd392c9e12, type: 3}
 --- !u!4 &1628343254 stripped
@@ -4215,6 +4156,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793862228}
   m_CullTransparentMesh: 0
+--- !u!1 &1851232346 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2659387325888076651, guid: 2a0c6719a72c8d64494a62ff194da9df,
+    type: 3}
+  m_PrefabInstance: {fileID: 1088654999}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1871437257 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7183537494733936828, guid: 99e749503c46c514da648b6400498e4d,
