@@ -32,6 +32,8 @@ public class ReadyUp : MonoBehaviour
         player2 = false;
         player3 = false;
         player4 = false;
+        PlayerPrefs.DeleteAll();
+
     }
 
 
@@ -44,13 +46,6 @@ public class ReadyUp : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.JoystickButton7))
         {
             SceneManager.LoadScene(Random.Range(5, 8));
-            PlayerPrefs.SetInt("Player1", 0);
-            PlayerPrefs.SetInt("Player2", 0);
-            PlayerPrefs.SetInt("Player3", 0);
-            PlayerPrefs.SetInt("Player4", 0);
-
-            kills.playedMatches = 0;
-
 
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton1))

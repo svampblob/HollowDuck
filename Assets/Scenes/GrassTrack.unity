@@ -1053,6 +1053,11 @@ PrefabInstance:
       propertyPath: offset.z
       value: -10
       objectReference: {fileID: 0}
+    - target: {fileID: 1342345738454576236, guid: d92567684317f8e4f9c390c9c7725a85,
+        type: 3}
+      propertyPath: player3
+      value: 
+      objectReference: {fileID: 463910229}
     - target: {fileID: 1342345738454576239, guid: d92567684317f8e4f9c390c9c7725a85,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4183,6 +4188,10 @@ MonoBehaviour:
   Player2: {fileID: 829104333}
   Player3: {fileID: 1169250989}
   Player4: {fileID: 1640328496}
+  player1: 0
+  player2: 0
+  player3: 0
+  player4: 0
 --- !u!1 &2046586470
 GameObject:
   m_ObjectHideFlags: 0

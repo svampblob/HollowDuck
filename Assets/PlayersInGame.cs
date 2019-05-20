@@ -28,7 +28,6 @@ public class PlayersInGame : MonoBehaviour
         if (player1 == 0) 
         {
             Destroy(Player1);
-
         }
         if (player2 == 0)
         {
