@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 7334125522533995477}
   - component: {fileID: 5906270720627859564}
   m_Layer: 0
-  m_Name: Fire_Bullet
-  m_TagString: Bullet
+  m_Name: Fire_Bullet 1
+  m_TagString: Bullet1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,8 +125,6 @@ MonoBehaviour:
   Player2: 0
   Player3: 0
   Player4: 0
-  cam: {fileID: 0}
-  exp: {fileID: 0}
 --- !u!61 &7334125522533995477
 BoxCollider2D:
   m_ObjectHideFlags: 0

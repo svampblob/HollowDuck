@@ -39,12 +39,11 @@ public class Kills : MonoBehaviour
         kills2 = Player2.GetComponent<Kills>();
         kills3 = Player3.GetComponent<Kills>();
         kills4 = Player4.GetComponent<Kills>();
-
-
-
     }
     private void Start()
     {
+        
+
         if (Player1 != null)
         {
             NmbrOfPlayers++;
@@ -61,7 +60,7 @@ public class Kills : MonoBehaviour
         {
             NmbrOfPlayers++;
             player3Null = false;
-
+            
         }
         if (Player4 != null)
         {

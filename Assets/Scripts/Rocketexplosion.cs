@@ -10,7 +10,7 @@ public class Rocketexplosion : MonoBehaviour
     public bool destroyItem;
     public bool armor;
     public GameObject exposion;
-    public MultipleTargetCamera Cam;
+    public MultipleTargetCamera1 Cam;
     public int Player1;
     public int Player2;
     public int Player3;
@@ -19,7 +19,7 @@ public class Rocketexplosion : MonoBehaviour
     void Start()
     {
         Rb.velocity = transform.right * speed;
-       Cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MultipleTargetCamera>();
+       Cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MultipleTargetCamera1>();
     }
     void Update()
     {

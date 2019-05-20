@@ -148,7 +148,6 @@ GameObject:
   - component: {fileID: 1148746045}
   - component: {fileID: 1148746050}
   - component: {fileID: 1148746056}
-  - component: {fileID: 6198950535329613584}
   m_Layer: 8
   m_Name: Player1
   m_TagString: Player1
@@ -784,29 +783,7 @@ MonoBehaviour:
   armor: {fileID: 1148746045}
   playercollider: {fileID: 1148746050}
   die: 0
---- !u!114 &6198950535329613584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1581953711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5d38380510750a4692c9f692335cfec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playedMatches: 0
-  Player1: {fileID: 1581953711}
-  Player2: {fileID: 0}
-  Player3: {fileID: 0}
-  Player4: {fileID: 0}
-  NmbrOfPlayers: 0
-  score: 0
-  text1: {fileID: 0}
-  text2: {fileID: 0}
-  text3: {fileID: 0}
-  text4: {fileID: 0}
+  kill: {fileID: 0}
 --- !u!1 &1654901560
 GameObject:
   m_ObjectHideFlags: 0

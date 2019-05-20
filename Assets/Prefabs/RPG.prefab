@@ -435,6 +435,7 @@ MonoBehaviour:
   Player4: 0
   touchedplayer: 0
   countdowntimer: 0
+  countdowntimer1: 0
 --- !u!50 &7086711231507089467
 Rigidbody2D:
   serializedVersion: 4
@@ -470,9 +471,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirePoint: {fileID: 4356079443534327944}
   bullet1: {fileID: 7246574370481356447, guid: 3c12f5acc198afd4b9d821924831554b, type: 3}
-  bullet2: {fileID: 7246574370481356447, guid: 3c12f5acc198afd4b9d821924831554b, type: 3}
-  bullet3: {fileID: 7246574370481356447, guid: 3c12f5acc198afd4b9d821924831554b, type: 3}
-  bullet4: {fileID: 7246574370481356447, guid: 3c12f5acc198afd4b9d821924831554b, type: 3}
+  bullet2: {fileID: 7246574370481356447, guid: f70ac006979632145803cb7065c4e62c, type: 3}
+  bullet3: {fileID: 7246574370481356447, guid: 1524dc9806370ee41a3dae53a207ae33, type: 3}
+  bullet4: {fileID: 7246574370481356447, guid: 54f8fd394a26177478addda631553cf4, type: 3}
   damage: 1
   shooting: 0
   NoAmmo: 0

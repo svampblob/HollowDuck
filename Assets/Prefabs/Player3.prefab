@@ -106,7 +106,6 @@ GameObject:
   - component: {fileID: 9129840380958788601}
   - component: {fileID: 983855056040127886}
   - component: {fileID: 2536818297645305176}
-  - component: {fileID: 4479680661957465764}
   - component: {fileID: 8899670122485517814}
   m_Layer: 0
   m_Name: Player3
@@ -542,6 +541,16 @@ MonoBehaviour:
   armor: {fileID: 983855056040127886}
   playercollider: {fileID: 7986313344592423361}
   die: 0
+  kill: {fileID: 0}
+  Numberofplayers: 0
+  player1Null: 0
+  player2Null: 0
+  player3Null: 0
+  player4Null: 0
+  Player1: {fileID: 0}
+  Player2: {fileID: 0}
+  Player3: {fileID: 0}
+  Player4: {fileID: 0}
 --- !u!114 &983855056040127886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -656,29 +665,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4479680661957465764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4123741311297171678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5d38380510750a4692c9f692335cfec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playedMatches: 0
-  Player1: {fileID: 0}
-  Player2: {fileID: 0}
-  Player3: {fileID: 4123741311297171678}
-  Player4: {fileID: 0}
-  NmbrOfPlayers: 0
-  score: 0
-  text1: {fileID: 0}
-  text2: {fileID: 0}
-  text3: {fileID: 0}
-  text4: {fileID: 0}
 --- !u!82 &8899670122485517814
 AudioSource:
   m_ObjectHideFlags: 0
