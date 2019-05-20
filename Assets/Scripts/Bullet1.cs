@@ -39,10 +39,6 @@ public class Bullet1 : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if (hitInfo.gameObject.GetComponent<armorOnPlayer>())
-        {
-            Destroy(gameObject);
-        }
        if(hitInfo.tag == "Player1")
        {
             Player1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<Player>().health = 0;

@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 1920166783796893550}
   - component: {fileID: 961317166486412058}
   - component: {fileID: 3220205888881215030}
-  - component: {fileID: 9217500450339604856}
   - component: {fileID: 5143400578547269850}
+  - component: {fileID: 5955021432185144309}
   m_Layer: 0
-  m_Name: Fire_Bullet
+  m_Name: Fire_Bullet 2
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,22 +138,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &9217500450339604856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4557775904167280654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb71923d786250047bb982ffeb3a4778, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 40
-  Rb: {fileID: 3220205888881215030}
-  TimeToDestroy: 0.8
-  destroyItem: 0
 --- !u!61 &5143400578547269850
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -180,3 +164,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.060452193, y: 0.008250244}
   m_EdgeRadius: 0
+--- !u!114 &5955021432185144309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4557775904167280654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb71923d786250047bb982ffeb3a4778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  Rb: {fileID: 3220205888881215030}
+  TimeToDestroy: 0.8
+  destroyItem: 0
+  armor: 0
+  Player1: 0
+  Player2: 0
+  Player3: 0
+  Player4: 0

@@ -179,7 +179,7 @@ MonoBehaviour:
   Health: 4
   anim: {fileID: 8182296098900415854}
   instantepoint: {fileID: 8182296099138913864}
-  destroyeffect: {fileID: 1236655899430844783, guid: c4257d05b2cf6d447b83cda4425d6f3b,
+  destroyeffect: {fileID: 1236655899430844783, guid: 98df5c26551e4a04a8c01ca324297ec1,
     type: 3}
 --- !u!1 &8182296099138913975
 GameObject:

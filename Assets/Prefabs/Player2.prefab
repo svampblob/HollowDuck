@@ -146,7 +146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7183537494733936828
 Transform:
   m_ObjectHideFlags: 0
@@ -257,7 +257,7 @@ MonoBehaviour:
   moving: 0
   right: 0
   left: 0
-  Jumpspeed: 15
+  Jumpspeed: 16
   IsJumping: 0
   disablecollider2D: {fileID: 7183537495493005852}
   slidingcollider: {fileID: 7183537494470072951}
@@ -292,11 +292,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d30a62a3e0c9a44a0e7ac25e7542a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arm: {fileID: 0}
+  arm: {fileID: 4288366899617577013}
   healthPoints: 5
   armorPoints: 1
   bulletproofVest: {fileID: 1445393022284994186}
-  bulletproofVestIsOn: 1
+  bulletproofVestIsOn: 0
 --- !u!114 &6134495811655171035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -685,10 +685,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playedMatches: 0
-  Player1: {fileID: 1581953711, guid: 2a061355b9befe846a8b610276fdaf13, type: 3}
+  Player1: {fileID: 0}
   Player2: {fileID: 0}
-  Player3: {fileID: 4123741311297171678, guid: 83e8c9ef6cc8ef743ac7c3ec7e182329, type: 3}
-  Player4: {fileID: 6886890244449010484, guid: 0f89c1dfdd2a7394ba8a07fd392c9e12, type: 3}
+  Player3: {fileID: 0}
+  Player4: {fileID: 0}
   NmbrOfPlayers: 0
   score: 0
   text1: {fileID: 0}
@@ -1057,3 +1057,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8281485245984852386}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4288366899617577013 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5291421756042473879, guid: ffd53e825075095409311e7756c09b90,
+    type: 3}
+  m_PrefabInstance: {fileID: 8281485245984852386}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445393022284994186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6e85b1d1e95064dabc9b149bb8fe52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

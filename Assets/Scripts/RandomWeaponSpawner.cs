@@ -21,7 +21,6 @@ public class RandomWeaponSpawner : MonoBehaviour
     void Start()
     {
         dontstartspawn = true;
-       
     }
     // Update is called once per frame
     void Update()
@@ -51,12 +50,11 @@ public class RandomWeaponSpawner : MonoBehaviour
        {
             if (Time.time > nextSpwan)
             {
-                whatToSpwan = Random.Range(0, 4);
+                whatToSpwan = Random.Range(0, 5);
                 Debug.Log(whatToSpwan);
 
                 switch (whatToSpwan)
                 {
-
                     case 1:
                         Instantiate(Prefab1, transform.position, Quaternion.identity);
                         break;
@@ -67,8 +65,8 @@ public class RandomWeaponSpawner : MonoBehaviour
                         Instantiate(Prefab3, transform.position, Quaternion.identity);
                         break;
                     case 4:
-                        Instantiate(Prefab3, transform.position, Quaternion.identity);
-                        break;
+                        Instantiate(Prefab4, transform.position, Quaternion.identity);
+                        break; 
                 }
 
                 nextSpwan = Time.time + SpawnRate;

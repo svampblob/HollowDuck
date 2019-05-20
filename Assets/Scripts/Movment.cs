@@ -18,7 +18,7 @@ public class Movment : MonoBehaviour
     public bool right;
     public bool left;
     // vareabel till Jumpfunction
-    public float Jumpspeed = 15f;
+    public float Jumpspeed = 16f;
     public bool IsJumping;
     // Vareabler till crouch animation och crouch collider2D
     public Collider2D disablecollider2D;
