@@ -1347,6 +1347,11 @@ PrefabInstance:
       propertyPath: targets.Array.data[3]
       value: 
       objectReference: {fileID: 1628343254}
+    - target: {fileID: 6762813219995775069, guid: d92567684317f8e4f9c390c9c7725a85,
+        type: 3}
+      propertyPath: minZoom
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d92567684317f8e4f9c390c9c7725a85, type: 3}
 --- !u!20 &643977508 stripped

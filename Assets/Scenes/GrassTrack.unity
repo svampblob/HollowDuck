@@ -1628,6 +1628,11 @@ PrefabInstance:
       propertyPath: targets.Array.data[3]
       value: 
       objectReference: {fileID: 1130949018}
+    - target: {fileID: 6762813219995775069, guid: d92567684317f8e4f9c390c9c7725a85,
+        type: 3}
+      propertyPath: minZoom
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2004086016, guid: d92567684317f8e4f9c390c9c7725a85, type: 3}
       propertyPath: Player1
       value: 
