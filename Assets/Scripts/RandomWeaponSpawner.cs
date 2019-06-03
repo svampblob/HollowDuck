@@ -5,7 +5,7 @@ using UnityEngine;
 public class RandomWeaponSpawner : MonoBehaviour
 {
     // prefab instantiate
-    public GameObject Prefab1, Prefab2, Prefab3, Prefab4;
+    public GameObject Prefab1, Prefab2, Prefab3;
     public bool spawned;
     // spawn rate
     public float SpawnRate = 8f;
@@ -21,7 +21,6 @@ public class RandomWeaponSpawner : MonoBehaviour
     void Start()
     {
         dontstartspawn = true;
-       
     }
     // Update is called once per frame
     void Update()
@@ -56,7 +55,6 @@ public class RandomWeaponSpawner : MonoBehaviour
 
                 switch (whatToSpwan)
                 {
-
                     case 1:
                         Instantiate(Prefab1, transform.position, Quaternion.identity);
                         break;
@@ -64,9 +62,6 @@ public class RandomWeaponSpawner : MonoBehaviour
                         Instantiate(Prefab2, transform.position, Quaternion.identity);
                         break;
                     case 3:
-                        Instantiate(Prefab3, transform.position, Quaternion.identity);
-                        break;
-                    case 4:
                         Instantiate(Prefab3, transform.position, Quaternion.identity);
                         break;
                 }

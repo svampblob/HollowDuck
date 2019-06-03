@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 9217500450339604856}
   - component: {fileID: 5143400578547269850}
   m_Layer: 0
-  m_Name: Fire_Bullet
-  m_TagString: Bullet
+  m_Name: Fire_Bullet 3
+  m_TagString: Bullet3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,6 +154,11 @@ MonoBehaviour:
   Rb: {fileID: 3220205888881215030}
   TimeToDestroy: 0.8
   destroyItem: 0
+  armor: 0
+  Player1: 0
+  Player2: 0
+  Player3: 0
+  Player4: 0
 --- !u!61 &5143400578547269850
 BoxCollider2D:
   m_ObjectHideFlags: 0

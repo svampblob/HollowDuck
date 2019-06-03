@@ -25,6 +25,12 @@ TagManager:
   - GrabbHitbox4
   - Props
   - RPG
+  - GrabableArmor
+  - Bullet1
+  - Bullet2
+  - Bullet3
+  - Bullet4
+  - PlayerSource
   layers:
   - Default
   - TransparentFX
